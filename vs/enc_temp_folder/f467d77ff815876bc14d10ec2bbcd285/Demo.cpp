@@ -697,10 +697,10 @@ void Demo::BuildTexturedChair()
 		
 		//Bagian belakang
 		//top
-		-1.0f,  4.0f, -4.7f, 0.0f, 0.0f,  0.0f,  1.0f,  0.0f, // 0
-		 1.0f,  4.0f, -4.7f, 1.0f, 0.0f,  0.0f,  1.0f,  0.0f, // 1
-		 1.0f,  4.0f, -4.9f, 1.0f, 1.0f,  0.0f,  1.0f,  0.0f, // 2
-		-1.0f,  4.0f, -4.9f, 0.0f, 1.0f,  0.0f,  1.0f,  0.0f, // 3 
+		-1.0f,  4.0f, -4.7f, 0.0f, 0.0f, 0.0f,  1.0f,  0.0f, // 0
+		 1.0f,  4.0f, -4.7f, 1.0f, 0.0f, 0.0f,  1.0f,  0.0f, // 1
+		 1.0f,  4.0f, -4.9f, 1.0f, 1.0f, 0.0f,  1.0f,  0.0f, // 2
+		-1.0f,  4.0f, -4.9f, 0.0f, 1.0f, 0.0f,  1.0f,  0.0f, // 3 
 		//bottom
 		-1.0f,  1.4f, -4.7f, 0.0f, 0.0f,  0.0f,-1.0f,  0.0f, // 4
 		 1.0f,  1.4f, -4.7f, 1.0f, 0.0f,  0.0f,-1.0f,  0.0f, // 5
@@ -744,156 +744,156 @@ void Demo::BuildTexturedChair()
 		1.0f,  1.4f, -2.5f,  1.0f, 1.0f,  0.0f,  0.0f, 1.0f,  // back top right 34
 	   -1.0f,  1.4f, -2.5f,  0.0f, 1.0f,  0.0f,  0.0f, 1.0f,  // back top left 35
 		//back							  
-       -1.0f,  1.6f, -4.7f,  0.0f, 0.0f,  0.0f,  0.0f,-1.0f,  // front bottom left 36
-		1.0f,  1.6f, -4.7f,  1.0f, 0.0f,  0.0f,  0.0f,-1.0f,  // front bottom right 37
-		1.0f,  1.4f, -4.7f,  1.0f, 1.0f,  0.0f,  0.0f,-1.0f,  // back bottom right 38
-	   -1.0f,  1.4f, -4.7f,  0.0f, 1.0f,  0.0f,  0.0f,-1.0f,  // back bottom left 39
+       -1.0f,  1.6f, -4.7f, 0.0f, 0.0f,	0.0f,  0.0f,  -1.0f,	// front bottom left 36
+		1.0f,  1.6f, -4.7f,  1.0f,0.0f,	0.0f,  0.0f,  -1.0f,	// front bottom right 37
+		1.0f,  1.4f, -4.7f, 1.0f, 1.0f,	0.0f,  0.0f,  -1.0f,	// back bottom right 38
+	   -1.0f,  1.4f, -4.7f, 0.0f, 1.0f,	0.0f,  0.0f,  -1.0f,	// back bottom left 39
 		//left
-	   -1.0f,  1.6f, -2.5f,  0.0f, 0.0f, -1.0f,  0.0f, 0.0f,  // front top left 40
-	   -1.0f,  1.6f, -4.7f,  1.0f, 0.0f, -1.0f,  0.0f, 0.0f,  // front top right 41
-	   -1.0f,  1.4f, -4.7f,  1.0f, 1.0f, -1.0f,  0.0f, 0.0f,  // back top right 42
-	   -1.0f,  1.4f, -2.5f,  0.0f, 1.0f, -1.0f,  0.0f, 0.0f,  // back top left 43
+		-1.0f,  1.6f, -2.5f,  0.0f, 0.0f,-1.0f,  0.0f,  0.0f,	  // front top left 40
+		-1.0f, 1.6f, -4.7f,  1.0f, 0.0f,-1.0f,  0.0f,  0.0f,	  // front top right 41
+		-1.0f, 1.4f, -4.7f, 1.0f, 1.0f,	-1.0f,  0.0f,  0.0f,	 // back top right 42
+		-1.0f,  1.4f, -2.5f, 0.0f, 1.0f,-1.0f,  0.0f,  0.0f,	// back top left 43
 		//right
-		1.0f,  1.6f, -2.5f,  0.0f, 0.0f,  1.0f,  0.0f, 0.0f,  // front bottom left 44
-		1.0f,  1.6f, -4.7f,  1.0f, 0.0f,  1.0f,  0.0f, 0.0f,  // front bottom right 45
-		1.0f,  1.4f, -4.7f,  1.0f, 1.0f,  1.0f,  0.0f, 0.0f,  // back bottom right 46
-		1.0f,  1.4f, -2.5f,  0.0f, 1.0f,  1.0f,  0.0f, 0.0f,  // back bottom left 47
+		1.0f, 1.6f, -2.5f, 0.0f, 0.0f,	1.0f,  0.0f,	0.0f,	//	 front bottom left 44
+		1.0f, 1.6f, -4.7f,  1.0f,0.0f,	1.0f,  0.0f,	0.0f,	//	 front bottom right 45
+		1.0f, 1.4f, -4.7f, 1.0f, 1.0f,	1.0f,  0.0f,	0.0f,	//	 back bottom right 46
+		1.0f, 1.4f, -2.5f, 0.0f, 1.0f,	1.0f,  0.0f,	0.0f,	//	 back bottom left 47
 
 		//Kaki kiri BELAKANG
 		//top
-		-1.0f,  1.4f, -4.7f, 0.0f, 0.0f,  0.0f,  1.0f,  0.0f, // front top left 48
-		-0.8f,  1.4f, -4.7f, 1.0f, 0.0f,  0.0f,  1.0f,  0.0f, // front top right 49
-		-0.8f,  1.4f, -4.9f, 1.0f, 1.0f,  0.0f,  1.0f,  0.0f, // back top right 50
-		-1.0f,  1.4f, -4.9f, 0.0f, 1.0f,  0.0f,  1.0f,  0.0f, // back top left 51
-		//bottom						  
-		-1.0f, -0.5f, -4.7f, 0.0f, 0.0f,  0.0f, -1.0f,  0.0f,	// front bottom left 52
-		-0.8f, -0.5f, -4.7f, 1.0f, 0.0f,  0.0f, -1.0f,  0.0f,	// front bottom right 53
-		-0.8f, -0.5f, -4.9f, 1.0f, 1.0f,  0.0f, -1.0f,  0.0f,	// back bottom right 54
-		-1.0f, -0.5f, -4.9f, 1.0f, 0.0f,  0.0f, -1.0f,  0.0f,	// back bottom left 55
-		//front							  
-		-1.0f,  1.4f, -4.7f, 0.0f, 0.0f,  0.0f,  0.0f,  1.0f, // front top left 56
-		-0.8f,  1.4f, -4.7f, 1.0f, 0.0f,  0.0f,  0.0f,  1.0f, // front top right 57
-		-0.8f, -0.5f, -4.7f, 1.0f, 1.0f,  0.0f,  0.0f,  1.0f, // back top right 58
-		-1.0f, -0.5f, -4.7f, 0.0f, 1.0f,  0.0f,  0.0f,  1.0f, // back top left 59
-		//back							  
-		-1.0f, 1.4f,  -4.9f, 0.0f, 0.0f,  0.0f,  0.0f, -1.0f, // front bottom left 60
-		-0.8f, 1.4f,  -4.9f, 1.0f, 0.0f,  0.0f,  0.0f, -1.0f, // front bottom right 61
-		-0.8f, -0.5f, -4.9f, 1.0f, 1.0f,  0.0f,  0.0f, -1.0f, // back bottom right 62
-		-1.0f, -0.5f, -4.9f, 1.0f, 0.0f,  0.0f,  0.0f, -1.0f, // back bottom left 63
-		//left							  
-		-1.0f,  1.4f, -4.9f, 0.0f, 0.0f,  1.0f,  0.0f,  0.0f,	// front top left 64
-		-1.0f,  1.4f, -4.7f, 1.0f, 0.0f,  1.0f,  0.0f,  0.0f,	// front top right 65
-		-1.0f, -0.5f, -4.7f, 1.0f, 1.0f,  1.0f,  0.0f,  0.0f,	// back top right 66
-		-1.0f, -0.5f, -4.9f, 0.0f, 1.0f,  1.0f,  0.0f,  0.0f,	// back top left 67
-		//right							  
-		-0.8f,  1.4f, -4.7f, 0.0f, 0.0f,  1.0f,  0.0f,  0.0f,	// front bottom left 68
-		-0.8f,  1.4f, -4.9f, 1.0f, 0.0f,  1.0f,  0.0f,  0.0f,	// front bottom right 69
-		-0.8f, -0.5f, -4.9f, 1.0f, 1.0f,  1.0f,  0.0f,  0.0f,	// back bottom right 70
-		-0.8f, -0.5f, -4.7f, 1.0f, 0.0f,  1.0f,  0.0f,  0.0f,	// back bottom left 71
+		-1.0f,  1.4f, -4.7f, 0.0f, 0.0f,	0.0f,  1.0f,  0.0f, 	// front top left 48
+		-0.8f, 1.4f, -4.7f,  1.0f, 0.0f,	0.0f,  1.0f,  0.0f, 	// front top right 49
+		-0.8f, 1.4f, -4.9f, 1.0f, 1.0f,		0.0f,  1.0f,  0.0f, 	// back top right 50
+		-1.0f,  1.4f, -4.9f, 0.0f, 1.0f,	0.0f,  1.0f,  0.0f, 	 // back top left 51
+		//bottom
+		-1.0f, -0.5f, -4.7f, 0.0f, 0.0f,	0.0f,  -1.0f,  0.0f,	// front bottom left 52
+		-0.8f, -0.5f, -4.7f,  1.0f, 0.0f,	0.0f, -1.0f,  0.0f,	// front bottom right 53
+		-0.8f, -0.5f, -4.9f, 1.0f, 1.0f,	0.0f,  -1.0f,  0.0f,	// back bottom right 54
+		-1.0f, -0.5f, -4.9f, 1.0f, 0.0f,	0.0f,  -1.0f,  0.0f,	// back bottom left 55
+		//front
+		-1.0f,  1.4f, -4.7f, 0.0f, 0.0f,	0.0f,  0.0f,	1.0f,  // front top left 56
+		-0.8f, 1.4f, -4.7f,  1.0f, 0.0f,	0.0f,  0.0f,	1.0f,   // front top right 57
+		-0.8f, -0.5f, -4.7f, 1.0f, 1.0f,	0.0f,  0.0f,	1.0f,   // back top right 58
+		-1.0f,  -0.5f, -4.7f, 0.0f, 1.0f,	0.0f,  0.0f,	1.0f,  // back top left 59
+		//back
+		-1.0f, 1.4f,  -4.9f,  0.0f,  0.0f,	0.0f,  0.0f,  -1.0f,	// front bottom left 60
+		-0.8f, 1.4f,  -4.9f,  1.0f, 0.0f,	0.0f,  0.0f,  -1.0f,	// front bottom right 61
+		-0.8f, -0.5f, -4.9f, 1.0f, 1.0f,	0.0f,  0.0f,  -1.0f,	// back bottom right 62
+		-1.0f, -0.5f, -4.9f, 1.0f, 0.0f,	0.0f,  0.0f,  -1.0f,	// back bottom left 63
+		//left
+		-1.0f, 1.4f,  -4.9f, 0.0f, 0.0f,	1.0f,  0.0f,  0.0f,	// front top left 64
+		-1.0f, 1.4f,  -4.7f, 1.0f, 0.0f,	1.0f,  0.0f,  0.0f,	// front top right 65
+		-1.0f, -0.5f, -4.7f, 1.0f, 1.0f,	1.0f,  0.0f,  0.0f,	// back top right 66
+		-1.0f, -0.5f, -4.9f, 0.0f, 1.0f,	1.0f,  0.0f,  0.0f,	// back top left 67
+		//right
+		-0.8f, 1.4f, -4.7f, 0.0f, 0.0f,		1.0f,  0.0f,	0.0f,	// front bottom left 68
+		-0.8f, 1.4f, -4.9f,  1.0f, 0.0f,	1.0f,  0.0f,	0.0f,	// front bottom right 69
+		-0.8f, -0.5f, -4.9f, 1.0f, 1.0f,	1.0f,  0.0f,	0.0f,	// back bottom right 70
+		-0.8f, -0.5f, -4.7f, 1.0f, 0.0f,	1.0f,  0.0f,	0.0f,	// back bottom left 71
 
 		//Kaki kanan BELAKANG
 		//top
-		 0.8f,  1.4f, -4.7f, 0.0f, 0.0f,  0.0f,  1.0f,  0.0f,  // front top left 72
-		 1.0f,  1.4f, -4.7f, 1.0f, 0.0f,  0.0f,  1.0f,  0.0f,  // front top right 73
-		 1.0f,  1.4f, -4.9f, 1.0f, 1.0f,  0.0f,  1.0f,  0.0f,  // back top right 74
-		 0.8f,  1.4f, -4.9f, 0.0f, 1.0f,  0.0f,  1.0f,  0.0f,  // back top left 75
+		0.8f,  1.4f, -4.7f, 0.0f, 0.0f,0.0f,  1.0f,  0.0f, 		// front top left 72
+		1.0f, 1.4f, -4.7f,  1.0f, 0.0f,0.0f,  1.0f,  0.0f, 		 // front top right 73
+		1.0f, 1.4f, -4.9f, 1.0f, 1.0f,	0.0f,  1.0f,  0.0f, 	// back top right 74
+		0.8f,  1.4f, -4.9f, 0.0f, 1.0f,0.0f,  1.0f,  0.0f, 		// back top left 75
 		//bottom
-		 0.8f, -0.5f, -4.7f, 0.0f, 0.0f,  0.0f,  -1.0f,  0.0f,	 // front bottom left 76
-		 1.0f, -0.5f, -4.7f, 1.0f, 0.0f,  0.0f,  -1.0f,  0.0f,	 // front bottom right 77
-		 1.0f, -0.5f, -4.9f, 1.0f, 1.0f,  0.0f,  -1.0f,  0.0f,	 // back bottom right 78
-		 0.8f, -0.5f, -4.9f, 0.0f, 1.0f,  0.0f,  -1.0f,  0.0f,	 // back bottom left 79
-		//front							  
-		 0.8f,  1.4f, -4.7f, 0.0f, 0.0f,  0.0f,   0.0f,  1.0f,  // front top left 80
-		 1.0f,  1.4f, -4.7f, 1.0f, 0.0f,  0.0f,   0.0f,  1.0f,  // front top right 81
-		 1.0f, -0.5f, -4.7f, 1.0f, 1.0f,  0.0f,   0.0f,  1.0f,  // back top right 82
-		 0.8f, -0.5f, -4.7f, 0.0f, 1.0f,  0.0f,   0.0f,  1.0f,  // back top left 83
+		0.8f, -0.5f, -4.7f, 0.0f, 0.0f,0.0f,  -1.0f,  0.0f,		// front bottom left 76
+		1.0f, -0.5f, -4.7f,  1.0f,0.0f,0.0f,  -1.0f,  0.0f,		// front bottom right 77
+		1.0f, -0.5f, -4.9f, 1.0f, 1.0f,0.0f,  -1.0f,  0.0f,		// back bottom right 78
+		0.8f, -0.5f, -4.9f, 0.0f, 1.0f,0.0f,  -1.0f,  0.0f,		// back bottom left 79
+		//front
+		0.8f,  1.4f, -4.7f, 0.0f, 0.0f,0.0f,  0.0f,	1.0f,		// front top left 80
+		1.0f, 1.4f, -4.7f,  1.0f, 0.0f,0.0f,  0.0f,	1.0f,		 // front top right 81
+		1.0f, -0.5f, -4.7f, 1.0f, 1.0f,0.0f,  0.0f,	1.0f,		 // back top right 82
+		0.8f,  -0.5f, -4.7f, 0.0f, 1.0f,0.0f,  0.0f,1.0f,	// back top left 83
 		//back
-		 0.8f,  1.4f, -4.9f, 0.0f, 0.0f,  0.0f,   0.0f, -1.0f,	 // front bottom left 84
-		 1.0f,  1.4f, -4.9f, 1.0f, 0.0f,  0.0f,   0.0f, -1.0f,	 // front bottom right 85
-		 1.0f, -0.5f, -4.9f, 1.0f, 1.0f,  0.0f,   0.0f, -1.0f,	 // back bottom right 86
-		 0.8f, -0.5f, -4.9f, 0.0f, 1.0f,  0.0f,   0.0f, -1.0f,	 // back bottom left 87
+		0.8f, 1.4f, -4.9f, 0.0f, 0.0f,	0.0f,  0.0f,  -1.0f,	// front bottom left 84
+		1.0f, 1.4f, -4.9f,  1.0f,0.0f,	0.0f,  0.0f,  -1.0f,	// front bottom right 85
+		1.0f, -0.5f, -4.9f, 1.0f, 1.0f,0.0f,  0.0f,  -1.0f,		 // back bottom right 86
+		0.8f, -0.5f, -4.9f, 0.0f, 1.0f,0.0f,  0.0f,  -1.0f,		 // back bottom left 87
 		//left
-		 0.8f,  1.4f, -4.9f, 0.0f, 0.0f,  1.0f,   0.0f,  0.0f,  // front top left 88
-		 0.8f,  1.4f, -4.7f, 1.0f, 0.0f,  1.0f,   0.0f,  0.0f,	 // front top right 89
-		 0.8f, -0.5f, -4.7f, 1.0f, 1.0f,  1.0f,   0.0f,  0.0f,	 // back top right 90
-		 0.8f, -0.5f, -4.9f, 0.0f, 1.0f,  1.0f,   0.0f,  0.0f,	 // back top left 91
+		0.8f,  1.4f, -4.9f, 0.0f, 0.0f,1.0f,  0.0f,  0.0f,		// front top left 88
+		0.8f, 1.4f, -4.7f,  1.0f, 0.0f,1.0f,  0.0f,  0.0f,		 // front top right 89
+		0.8f, -0.5f, -4.7f, 1.0f, 1.0f,1.0f,  0.0f,  0.0f,		 // back top right 90
+		0.8f,  -0.5f, -4.9f, 0.0f, 1.0f, 1.0f,  0.0f,  0.0f,	// back top left 91
 		//right
-		 1.0f,  1.4f, -4.7f, 0.0f, 0.0f,  1.0f,   0.0f,  0.0f,	 // front bottom left 92
-		 1.0f,  1.4f, -4.9f, 1.0f, 0.0f,  1.0f,   0.0f,  0.0f,  // front bottom right 93
-		 1.0f, -0.5f, -4.9f, 1.0f, 1.0f,  1.0f,   0.0f,  0.0f,	 // back bottom right 94
-		 1.0f, -0.5f, -4.7f, 0.0f, 1.0f,  1.0f,   0.0f,  0.0f,	 // back bottom left 95
+		1.0f, 1.4f, -4.7f, 0.0f, 0.0f,	1.0f,  0.0f,	0.0f,	// front bottom left 92
+		1.0f, 1.4f, -4.9f,  1.0f,0.0f,	1.0f,  0.0f,	0.0f,	// front bottom right 93
+		1.0f, -0.5f, -4.9f, 1.0f, 1.0f,1.0f,  0.0f,	0.0f,		 // back bottom right 94
+		1.0f, -0.5f, -4.7f, 0.0f, 1.0f,1.0f,  0.0f,	0.0f,		 // back bottom left 95
 
 		//Kaki kiri DEPAN
-		-1.0f,  1.4f, -2.5f, 0.0f, 0.0f,  0.0f,   1.0f,  0.0f,  // front top left 96
-		-0.8f,  1.4f, -2.5f, 1.0f, 0.0f,  0.0f,   1.0f,  0.0f,  // front top right 97
-		-0.8f,  1.4f, -2.7f, 1.0f, 1.0f,  0.0f,   1.0f,  0.0f,  // back top right 98
-		-1.0f,  1.4f, -2.7f, 0.0f, 1.0f,  0.0f,   1.0f,  0.0f,  // back top left 99
+		-1.0f,  1.4f, -2.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 	// front top left 96
+		-0.8f, 1.4f, -2.5f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 	 // front top right 97
+		-0.8f, 1.4f, -2.7f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 	 // back top right 98
+		-1.0f, 1.4f, -2.7f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 	// back top left 99
 
-		-1.0f, -0.5f, -2.5f, 0.0f, 0.0f,  0.0f,  -1.0f,  0.0f,	 // front bottom left 100
-		-0.8f, -0.5f, -2.5f, 1.0f, 0.0f,  0.0f,  -1.0f,  0.0f,  // front bottom right 101
-		-0.8f, -0.5f, -2.7f, 1.0f, 1.0f,  0.0f,  -1.0f,  0.0f,	 // back bottom right 102
-		-1.0f, -0.5f, -2.7f, 0.0f, 1.0f,  0.0f,  -1.0f,  0.0f,  // back bottom left 103
+		-1.0f, -0.5f, -2.5f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f,	// front bottom left 100
+		-0.8f, -0.5f, -2.5f, 1.0f, 0.0f, 0.0f, -1.0f, 0.0f,	 // front bottom right 101
+		-0.8f, -0.5f, -2.7f, 1.0f, 1.0f, 0.0f, -1.0f, 0.0f,	// back bottom right 102
+		-1.0f, -0.5f, -2.7f, 0.0f, 1.0f, 0.0f, -1.0f, 0.0f,	// back bottom left 103
 
-		-1.0f,  1.4f, -2.5f, 0.0f, 0.0f,  0.0f,   0.0f,  1.0f,	 // front top left 104
-		-0.8f,  1.4f, -2.5f, 1.0f, 0.0f,  0.0f,   0.0f,  1.0f,	 // front top right 105
-		-0.8f, -0.5f, -2.5f, 1.0f, 1.0f,  0.0f,   0.0f,  1.0f,	 // back top right 106
-		-1.0f, -0.5f, -2.5f, 0.0f, 1.0f,  0.0f,   0.0f,  1.0f,  // back top left 107
+		-1.0f, 1.4f, -2.5f, 0.0f, 0.0f, 0.0f, 0.0f,  1.0f,	// front top left 104
+		-0.8f, 1.4f, -2.5f, 1.0f, 0.0f, 0.0f, 0.0f,  1.0f,	 // front top right 105
+		-0.8f, -0.5f, -2.5f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f,	  // back top right 106
+		-1.0f, -0.5f, -2.5f, 0.0f, 1.0f,0.0f, 0.0f,  1.0f, 	 // back top left 107
 
-		-1.0f,  1.4f, -2.7f, 0.0f, 0.0f,  0.0f,   0.0f, -1.0f,	 // front bottom left 108
-		-0.8f,  1.4f, -2.7f, 1.0f, 0.0f,  0.0f,   0.0f, -1.0f,	 // front bottom right 109
-		-0.8f, -0.5f, -2.7f, 1.0f, 1.0f,  0.0f,   0.0f, -1.0f,	 // back bottom right 110
-		-1.0f, -0.5f, -2.7f, 0.0f, 1.0f,  0.0f,   0.0f, -1.0f,	 // back bottom left 111
+		-1.0f, 1.4f, -2.7f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f,		// front bottom left 108
+		-0.8f, 1.4f, -2.7f, 1.0f, 0.0f, 0.0f, 0.0f, -1.0f,		 // front bottom right 109
+		-0.8f, -0.5f, -2.7f, 1.0f, 1.0f, 0.0f, 0.0f, -1.0f,		 // back bottom right 110
+		-1.0f, -0.5f, -2.7f, 0.0f, 1.0f, 0.0f, 0.0f, -1.0f,		 // back bottom left 111
 
-		-1.0f,  1.4f, -2.7f, 0.0f, 0.0f,  1.0f,   0.0f,  0.0f,	 // front top left 112
-		-1.0f,  1.4f, -2.5f, 1.0f, 0.0f,  1.0f,   0.0f,  0.0f,	 // front top right 113
-		-1.0f, -0.5f, -2.5f, 1.0f, 1.0f,  1.0f,   0.0f,  0.0f,	 // back top right 114
-		-1.0f, -0.5f, -2.7f, 0.0f, 1.0f,  1.0f,   0.0f,  0.0f,  // back top left 115
+		-1.0f, 1.4f, -2.7f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,		// front top left 112
+		-1.0f, 1.4f, -2.5f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,		 // front top right 113
+		-1.0f, -0.5f, -2.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,		  // back top right 114
+		-1.0f, -0.5f, -2.7f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 		 // back top left 115
 
-		-0.8f,  1.4f, -2.5f, 0.0f, 0.0f,  1.0f,   0.0f,  0.0f,  // front bottom left 116
-		-0.8f,  1.4f, -2.7f, 1.0f, 0.0f,  1.0f,   0.0f,  0.0f,	 // front bottom right 117
-		-0.8f, -0.5f, -2.7f, 1.0f, 1.0f,  1.0f,   0.0f,  0.0f,	 // back bottom right 118
-		-0.8f, -0.5f, -2.5f, 0.0f, 1.0f,  1.0f,   0.0f,  0.0f,	 // back bottom left 119
+		-0.8f, 1.4f, -2.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,		// front bottom left 116
+		-0.8f, 1.4f, -2.7f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,		 // front bottom right 117
+		-0.8f, -0.5f, -2.7f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,		 // back bottom right 118
+		-0.8f, -0.5f, -2.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f,		 // back bottom left 119
 
 		//Kaki kanan DEPAN
-		0.8f,  1.4f, -2.5f, 0.0f, 0.0f,   0.0f,   1.0f,  0.0f,  // front top left 120
-		1.0f,  1.4f, -2.5f, 1.0f, 0.0f,   0.0f,   1.0f,  0.0f,  // front top right 121
-		1.0f,  1.4f, -2.7f, 1.0f, 1.0f,   0.0f,   1.0f,  0.0f,  // back top right 122
-		0.8f,  1.4f, -2.7f, 0.0f, 1.0f,   0.0f,   1.0f,  0.0f,	 // back top left 123
+		0.8f,  1.4f, -2.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 		// front top left 120
+		1.0f, 1.4f, -2.5f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 		 // front top right 121
+		1.0f, 1.4f, -2.7f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 	// back top right 122
+		0.8f, 1.4f, -2.7f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,		// back top left 123
 
-		0.8f, -0.5f, -2.5f, 0.0f, 0.0f,   0.0f,  -1.0f,  0.0f,	 // front bottom left 124
-		1.0f, -0.5f, -2.5f, 1.0f, 0.0f,   0.0f,  -1.0f,  0.0f,	 // front bottom right 125
-		1.0f, -0.5f, -2.7f, 1.0f, 1.0f,   0.0f,  -1.0f,  0.0f,  // back bottom right 126
-		0.8f, -0.5f, -2.7f, 0.0f, 1.0f,   0.0f,  -1.0f,  0.0f,  // back bottom left 127
+		0.8f, -0.5f, -2.5f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f,		// front bottom left 124
+		1.0f, -0.5f, -2.5f, 1.0f, 0.0f, 0.0f, -1.0f, 0.0f,		  // front bottom right 125
+		1.0f, -0.5f, -2.7f, 1.0f, 1.0f, 0.0f, -1.0f, 0.0f,		// back bottom right 126
+		0.8f, -0.5f, -2.7f, 0.0f, 1.0f, 0.0f, -1.0f, 0.0f,		// back bottom left 127
 
-		0.8f,  1.4f, -2.5f, 0.0f, 0.0f,   0.0f,   0.0f,  1.0f,  // front top left 128
-		1.0f,  1.4f, -2.5f, 1.0f, 0.0f,   0.0f,   0.0f,  1.0f,	 // front top right 129
-		1.0f, -0.5f, -2.5f, 1.0f, 1.0f,   0.0f,   0.0f,  1.0f,	 // back top right 130
-		0.8f, -0.5f, -2.5f, 0.0f, 1.0f,   0.0f,   0.0f,  1.0f,	 // back top left 131
+		0.8f, 1.4f, -2.5f, 0.0f, 0.0f, 0.0f, 0.0f,   1.0f,		// front top left 128
+		1.0f, 1.4f, -2.5f, 1.0f, 0.0f, 0.0f, 0.0f,   1.0f,		 // front top right 129
+		1.0f, -0.5f, -2.5f, 1.0f, 1.0f, 0.0f, 0.0f,  1.0f,		 // back top right 130
+		0.8f, -0.5f, -2.5f, 0.0f, 1.0f, 0.0f, 0.0f,  1.0f,		// back top left 131
 
-		0.8f,  1.4f, -2.7f, 0.0f, 0.0f,   0.0f,   0.0f, -1.0f,	 // front bottom left 132
-		1.0f,  1.4f, -2.7f, 1.0f, 0.0f,   0.0f,   0.0f, -1.0f,	 // front bottom right 133
-		1.0f, -0.5f, -2.7f, 1.0f, 1.0f,   0.0f,   0.0f, -1.0f,	 // back bottom right 134
-		0.8f, -0.5f, -2.7f, 0.0f, 1.0f,   0.0f,   0.0f, -1.0f,	 // back bottom left 135
+		0.8f, 1.4f, -2.7f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f,	// front bottom left 132
+		1.0f, 1.4f, -2.7f, 1.0f, 0.0f, 0.0f, 0.0f, -1.0f,	  // front bottom right 133
+		1.0f, -0.5f, -2.7f, 1.0f, 1.0f, 0.0f, 0.0f, -1.0f,	 // back bottom right 134
+		0.8f, -0.5f, -2.7f, 0.0f, 1.0f, 0.0f, 0.0f, -1.0f,	 // back bottom left 135
 
-		0.8f,  1.4f, -2.7f, 0.0f, 0.0f,   1.0f,   0.0f,  0.0f,	 // front top left 136
-		0.8f,  1.4f, -2.5f, 1.0f, 0.0f,   1.0f,   0.0f,  0.0f,	 // front top right 137
-		0.8f, -0.5f, -2.5f, 1.0f, 1.0f,   1.0f,   0.0f,  0.0f,	 // back top right 138
-		0.8f, -0.5f, -2.7f, 0.0f, 1.0f,   1.0f,   0.0f,  0.0f,	 // back top left 139
+		0.8f, 1.4f, -2.7f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,		// front top left 136
+		0.8f, 1.4f, -2.5f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,		 // front top right 137
+		0.8f, -0.5f, -2.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,		 // back top right 138
+		0.8f, -0.5f, -2.7f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f,		// back top left 139
 
-		1.0f,  1.4f, -2.5f, 0.0f, 0.0f,   1.0f,   0.0f,  0.0f,	 // front bottom left 140
-		1.0f,  1.4f, -2.7f, 1.0f, 0.0f,   1.0f,   0.0f,  0.0f,	 // front bottom right 141
-		1.0f, -0.5f, -2.7f, 1.0f, 1.0f,   1.0f,   0.0f,  0.0f,	 // back bottom right 142
-		1.0f, -0.5f, -2.5f, 0.0f, 1.0f,	  1.0f,   0.0f,  0.0f	 // back bottom left 143
+		1.0f, 1.4f, -2.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,	// front bottom left 140
+		1.0f, 1.4f, -2.7f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,	  // front bottom right 141
+		1.0f, -0.5f, -2.7f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,	 // back bottom right 142
+		1.0f, -0.5f, -2.5f, 0.0f, 1.0f,	1.0f, 0.0f, 0.0f	// back bottom left 143
 
 	};
 
 	GLuint indices[] = {
-		0,     1,	  2,	 0,		2,	   3,  
-		4,     5,	  6,	 4,		6,	   7,  
-		8,     9,	  10,	 8,		10,	   11, 
-		12,    14,	  13,	 12,	15,	   14, 
-		16,    18,	  17,	 16,	19,	   18, 
-		20,    22,	  21,	 20,	23,	   22, 
+		0,  1,  2,  0,  2,  3,   // front
+		4,  5,  6,  4,  6,  7,   // right
+		8,  9,  10, 8,  10, 11,  // back
+		12, 14, 13, 12, 15, 14,  // left
+		16, 18, 17, 16, 19, 18,  // upper
+		20, 22, 21, 20, 23, 22,   // bottom
 
 		24,    25,    26,    24,    26,    27,
 		28,    29,    30,    28,    30,    31,
@@ -909,27 +909,27 @@ void Demo::BuildTexturedChair()
 		64,    66,    65,    64,    67,    66,
 		68,    70,    69,    68,    71,    70,
 
-		72,    73,	  74,	 72,	74,	   75,
-		76,    77,	  78,	 76,	78,	   79,
-		80,    81,	  82,	 80,    82,    83,
-		84,    86,	  85,	 84,	87,	   86,
-		88,	   90,	  89,	 88,	91,	   90,
-		92,    94,	  93,	 92,	95,	   94,
+		72,    73,74,72,74,75,
+		76,    77,78,76,78,79,
+		80,    81,82,80,82,83,
+		84,   86,85,84,87,86,
+		88,90,89,88,91,90,
+		92,94,93,92,95,94,
 
-		96,	   97,	  98,	 96,	98,	   99,
-	   100,   101,	 102,	100,   102,	  103,
-	   104,   105,	 106,	104,   106,	  107,
-	   108,   110,	 109,	108,   111,	  110,
-	   112,   114,	 113,	112,   115,	  114,
-	   116,   118,	 117,	116,   119,	  118,
+		96,	97,	98,	96,	98,	99,
+		100,	101,	102,	100,	102,	103,
+		104,	105,	106,	104,	106,	107,
+		108,	110,	109,	108,	111,	110,
+		112,	114,	113,	112,	115,	114,
+		116,	118,	117,	116,	119,	118,
 
 
-	   120,	  121,	 122,   120,   122,	  123,
-	   124,	  125,	 126,   124,   126,	  127,
-	   128,	  129,	 130,   128,   130,	  131,
-	   132,	  134,	 133,   132,   135,	  134,
-	   136,	  138,	 137,   136,   139,	  138,
-	   140,	  142,	 141,   140,   143,	  142
+		120,	121,	122,	120,	122,	123,
+		124,	125,	126,	124,	126,	127,
+		128,	129,	130,	128,	130,	131,
+		132,	134,	133,	132,	135,	134,
+		136,	138,	137,	136,	139,	138,
+		140,	142,	141,	140,	143,	142
 
 	};
 
@@ -945,17 +945,17 @@ void Demo::BuildTexturedChair()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO6);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	
+	// Position attribute
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), 0);
 	glEnableVertexAttribArray(0);
-	
+	// TexCoord attribute
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
-	
+	//normal
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(5 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
 
-	glBindVertexArray(0); 
+	glBindVertexArray(0); // Unbind VAO
 }
 
 void Demo::DrawTexturedChair()
@@ -973,7 +973,7 @@ void Demo::DrawTexturedChair()
 	GLint shininessMatLoc = glGetUniformLocation(this->shaderProgram, "material.shininess");
 	glUniform1f(shininessMatLoc, 1.0f);
 
-	glBindVertexArray(VAO6); 
+	glBindVertexArray(VAO6); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 
 	glDrawElements(GL_TRIANGLES, 1000, GL_UNSIGNED_INT, 0);
 
@@ -983,7 +983,7 @@ void Demo::DrawTexturedChair()
 
 void Demo::BuildTexturedBoard()
 {
-
+	// Load and create a texture 
 	glGenTextures(1, &texture7);
 	glBindTexture(GL_TEXTURE_2D, texture7);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -998,8 +998,12 @@ void Demo::BuildTexturedBoard()
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	
+	// Build geometry
 	GLfloat vertices[] = {
+		// format position, tex coords
+		//Bagian belakang
+		//Papan Tulis
+
 
 		//Pinggir Kiri
 		//front
@@ -1015,78 +1019,101 @@ void Demo::BuildTexturedBoard()
 		-7.5f, 4.0f, 11.7f, 0.0f, 1.0f, 1.0f,  0.0f,	0.0f, // back bottom left 15 
 
 		//left
-		-7.8f, 9.3f, 12.0f, 0.0f, 0.0f,-1.0f,  0.0f,	0.0f, // front top right 9
-		-7.8f, 9.3f, 11.7f, 1.0f, 0.0f,-1.0f,  0.0f,	0.0f, // front top left 8
-		-7.8f, 3.7f, 11.7f, 1.0f, 1.0f,-1.0f,  0.0f,	0.0f, // back top right 10
-		-7.8f, 3.7f, 12.0f, 0.0f, 1.0f,-1.0f,  0.0f,	0.0f, // back top left 11
+		-7.8f, 9.3f, 12.0f, 0.0f, 0.0f, -1.0f,  0.0f,	0.0f,   // front top right 9
+		-7.8f, 9.3f, 11.7f, 1.0f, 0.0f, -1.0f,  0.0f,	0.0f,  // front top left 8
+		-7.8f, 3.7f, 11.7f, 1.0f, 1.0f, -1.0f,  0.0f,	0.0f,   // back top right 10
+		-7.8f, 3.7f, 12.0f, 0.0f, 1.0f, -1.0f,  0.0f,	0.0f, // back top left 11
 
+		////top
+		//5.4f, 9.0f, -7.7f, 0.0f, 0.0f,   // front top right 9
+		//5.1f, 9.3f, -7.7f, 1.0f, 0.0f,  // front top left 8
+		//5.1f, 9.3f, -8.0f, 1.0f, 1.0f, // back top left 11 
+		//5.4f, 9.0f, -8.0f, 0.0f, 1.0f,   // back top right 10
+
+		////bottom
+		//5.1f, 3.7f, -7.7f, 0.0f, 0.0f, // front bottom left 12
+		//5.4f, 4.0f, -7.7f, 1.0f, 0.0f, // front bottom right 13
+		//5.4f, 4.0f, -8.0f, 1.0f, 1.0f, // back bottom right 14
+		//5.1f, 3.7f, -8.0f, 0.0f, 1.0f, // back bottom left 15 
 
 		//Pinggir Kanan
 		//front
-		7.5f, 4.0f, 11.7f, 0.0f, 0.0f,  0.0f,  0.0f,	1.0f, // back top right 10
-		7.8f, 3.7f, 11.7f, 1.0f, 0.0f,  0.0f,  0.0f,	1.0f, // back top left 11
-		7.8f, 9.3f, 11.7f, 1.0f, 1.0f,  0.0f,  0.0f,	1.0f, // front top right 9
-		7.5f, 9.0f, 11.7f, 0.0f, 1.0f,  0.0f,  0.0f,	1.0f, // front top left 8
+		7.5f, 4.0f, 11.7f, 0.0f, 0.0f,0.0f,  0.0f,	1.0f,   // back top right 10
+		7.8f, 3.7f, 11.7f, 1.0f, 0.0f,0.0f,  0.0f,	1.0f, // back top left 11
+		7.8f, 9.3f, 11.7f, 1.0f, 1.0f,0.0f,  0.0f,	1.0f,   // front top right 9
+		7.5f, 9.0f, 11.7f, 0.0f, 1.0f,0.0f,  0.0f,	1.0f,  // front top left 8
 
 		//right
-		7.8f, 9.3f, 11.7f, 0.0f, 0.0f,  1.0f,  0.0f,	0.0f, // front top left 16
-		7.8f, 9.3f, 12.0f, 1.0f, 0.0f,  1.0f,  0.0f,	0.0f, // front top right 17
-		7.8f, 3.7f, 12.0f, 1.0f, 1.0f,  1.0f,  0.0f,	0.0f, // back top left 19
-		7.8f, 3.7f, 11.7f, 0.0f, 1.0f,  1.0f,  0.0f,	0.0f, // back top right 18 
+		7.8f, 9.3f, 11.7f, 0.0f, 0.0f,1.0f,  0.0f,	0.0f,  // front top left 16
+		7.8f, 9.3f, 12.0f, 1.0f, 0.0f,1.0f,  0.0f,	0.0f,   // front top right 17
+		7.8f, 3.7f, 12.0f, 1.0f, 1.0f,1.0f,  0.0f,	0.0f, // back top left 19
+		7.8f, 3.7f, 11.7f, 0.0f, 1.0f,1.0f,  0.0f,	0.0f,   // back top right 18 
 
 		//left
-		7.5f, 4.0f, 12.0f, 0.0f, 0.0f, -1.0f,  0.0f,    0.0f, // back top left 19
-		7.5f, 4.0f, 11.7f, 1.0f, 0.0f, -1.0f,  0.0f,    0.0f, // back top right 18
-		7.5f, 9.0f, 11.7f, 1.0f, 1.0f, -1.0f,  0.0f,    0.0f, // front top left 16
-		7.5f, 9.0f, 12.0f, 0.0f, 1.0f, -1.0f,  0.0f,    0.0f, // front top right 17
+		7.5f, 4.0f, 12.0f, 0.0f, 0.0f,-1.0f,  0.0f,0.0f, // back top left 19
+		7.5f, 4.0f, 11.7f, 1.0f, 0.0f,-1.0f,  0.0f,0.0f,   // back top right 18
+		7.5f, 9.0f, 11.7f, 1.0f, 1.0f,-1.0f,  0.0f,0.0f,  // front top left 16
+		7.5f, 9.0f, 12.0f, 0.0f, 1.0f,-1.0f,  0.0f,0.0f,   // front top right 17
+
+		////top
+		//20.4f, 9.0f, -7.7f, 0.0f, 0.0f,  // front top left 16
+		//20.7f, 9.3f, -7.7f, 1.0f, 0.0f,   // front top right 17
+		//20.7f, 9.3f, -8.0f, 1.0f, 1.0f,   // back top right 18
+		//20.4f, 9.0f, -8.0f, 0.0f, 1.0f, // back top left 19 
+
+		////bottom
+		//20.4f, 4.0f, -8.0f, 0.0f, 0.0f, // back bottom left 23
+		//20.7f, 3.7f, -8.0f, 1.0f, 0.0f, // back bottom right 22
+		//20.7f, 3.7f, -7.7f, 1.0f, 1.0f, // front bottom right 21
+		//20.4f, 4.0f, -7.7f, 0.0f, 1.0f, // front bottom left 20
 
 		//Pinggir Atas
 		//front
-		-7.5f, 9.0f, 11.7f, 0.0f, 0.0f, 0.0f,  0.0f,	1.0f, // front top left 24
-		 7.5f, 9.0f, 11.7f, 1.0f, 0.0f, 0.0f,  0.0f,	1.0f, // back top left 27 
-		 7.8f, 9.3f, 11.7f, 1.0f, 1.0f, 0.0f,  0.0f,	1.0f, // back top right 26
-		-7.8f, 9.3f, 11.7f, 0.0f, 1.0f, 0.0f,  0.0f,	1.0f, // front top right 25
+		-7.5f, 9.0f, 11.7f, 0.0f, 0.0f,0.0f,  0.0f,	  1.0f,	  // front top left 24
+		7.5f, 9.0f, 11.7f, 1.0f, 0.0f, 0.0f,  0.0f,	  1.0f,	// back top left 27 
+		7.8f, 9.3f, 11.7f, 1.0f, 1.0f, 0.0f,  0.0f,	  1.0f,	  // back top right 26
+		-7.8f, 9.3f, 11.7f, 0.0f, 1.0f,0.0f,  0.0f,	  1.0f,	   // front top right 25
 
 		//top
-		 7.8f, 9.3f, 11.7f, 0.0f, 0.0f, 0.0f,  0.5f,    0.0f, // front top right 25
-		-7.8f, 9.3f, 11.7f, 1.0f, 0.0f, 0.0f,  0.5f,    0.0f, // front top left 24
-		-7.8f, 9.3f, 12.0f, 1.0f, 1.0f, 0.0f,  0.5f,    0.0f, // back top left 27 
-		 7.8f, 9.3f, 12.0f, 0.0f, 1.0f, 0.0f,  0.5f,    0.0f, // back top right 26
+		7.8f, 9.3f, 11.7f, 0.0f, 0.0f,  0.0f,  0.5f,  0.0f,  // front top right 25
+		-7.8f,  9.3f, 11.7f, 1.0f, 0.0f, 0.0f, 0.5f,  0.0f, // front top left 24
+		-7.8f,  9.3f, 12.0f, 1.0f, 1.0f, 0.0f, 0.5f,  0.0f, // back top left 27 
+		7.8f, 9.3f, 12.0f, 0.0f, 1.0f,  0.0f,  0.5f,  0.0f,  // back top right 26
 
 		//bottom
-		-7.5f, 9.0f, 12.0f, 0.0f, 0.0f, 0.0f, -1.0f,    0.0f, // back bottom left 31
-		 7.5f, 9.0f, 12.0f, 1.0f, 0.0f, 0.0f, -1.0f,    0.0f, // back bottom right 30
-		 7.5f, 9.0f, 11.7f, 1.0f, 1.0f, 0.0f, -1.0f,    0.0f, // front bottom right 29
-		-7.5f, 9.0f, 11.7f, 0.0f, 1.0f, 0.0f, -1.0f,    0.0f, // front bottom left 28
+		-7.5f, 9.0f, 12.0f, 0.0f, 0.0f,0.0f,  -1.0f,  0.0f, // back bottom left 31
+		7.5f, 9.0f, 12.0f, 1.0f, 0.0f, 0.0f,  -1.0f,  0.0f,// back bottom right 30
+		7.5f, 9.0f, 11.7f, 1.0f, 1.0f, 0.0f,  -1.0f,  0.0f,// front bottom right 29
+		-7.5f, 9.0f, 11.7f, 0.0f, 1.0f,0.0f,  -1.0f,  0.0f, // front bottom left 28
 
 		//Pinggir Bawah
 		//front
-		-7.8f, 3.7f, 11.7f, 0.0f, 0.0f, 0.0f,  0.0f,    1.0f, // front top right 25
-		 7.8f, 3.7f, 11.7f, 1.0f, 0.0f, 0.0f,  0.0f,    1.0f, // back top left 27
-		 7.5f, 4.0f, 11.7f, 1.0f, 1.0f, 0.0f,  0.0f,    1.0f, // back top right 26
-		-7.5f, 4.0f, 11.7f, 0.0f, 1.0f, 0.0f,  0.0f,    1.0f, // front top left 24
+		-7.8f, 3.7f, 11.7f, 0.0f, 0.0f,0.0f,  0.0f,1.0f,	   // front top right 25
+		7.8f, 3.7f, 11.7f, 1.0f, 0.0f, 0.0f,  0.0f,1.0f,	// back top left 27
+		7.5f, 4.0f, 11.7f, 1.0f, 1.0f, 0.0f,  0.0f,1.0f,	  // back top right 26
+		-7.5f, 4.0f, 11.7f, 0.0f, 1.0f,0.0f,  0.0f,1.0f,	  // front top left 24
 
 		//top
-		 7.5f, 4.0f, 11.7f, 0.0f, 0.0f, 0.0f,  1.0f,    0.0f, // front top right 33
-		-7.5f, 4.0f, 11.7f, 1.0f, 0.0f, 0.0f,  1.0f,    0.0f, // front top left 32
-		-7.5f, 4.0f, 12.0f, 1.0f, 1.0f, 0.0f,  1.0f,    0.0f, // back top left 35 
-		 7.5f, 4.0f, 12.0f, 0.0f, 1.0f, 0.0f,  1.0f,    0.0f, // back top right 34
+		7.5f, 4.0f, 11.7f, 0.0f, 0.0f,  0.0f,  1.0f,  0.0f,  // front top right 33
+		-7.5f,  4.0f, 11.7f, 1.0f, 0.0f, 0.0f,  1.0f,  0.0f,  // front top left 32
+		-7.5f,  4.0f, 12.0f, 1.0f, 1.0f, 0.0f,  1.0f,  0.0f, // back top left 35 
+		7.5f, 4.0f, 12.0f, 0.0f, 1.0f,  0.0f,  1.0f,  0.0f,  // back top right 34
 
 		//bottom
-		-7.8f, 3.7f, 12.0f, 0.0f, 0.0f, 0.0f, -1.0f,    0.0f, // back bottom left 39
-		 7.8f, 3.7f, 12.0f, 1.0f, 0.0f, 0.0f, -1.0f,    0.0f, // back bottom right 38
-		 7.8f, 3.7f, 11.7f, 1.0f, 1.0f, 0.0f, -1.0f,    0.0f, // front bottom right 37
-		-7.8f, 3.7f, 11.7f, 0.0f, 1.0f, 0.0f, -1.0f,    0.0f  // front bottom left 36
+		-7.8f, 3.7f, 12.0f, 0.0f, 0.0f,0.0f,  -1.0f,  0.0f, // back bottom left 39
+		7.8f, 3.7f, 12.0f, 1.0f, 0.0f, 0.0f,  -1.0f,  0.0f,// back bottom right 38
+		7.8f, 3.7f, 11.7f, 1.0f, 1.0f, 0.0f,  -1.0f,  0.0f,// front bottom right 37
+		-7.8f, 3.7f, 11.7f, 0.0f, 1.0f ,0.0f,  -1.0f,  0.0f
 
 	};
 
 	GLuint indices[] = {
-		0,     1,     2,     0,		2,     3,   
-		4,     5,     6,     4,		6,     7,   
-		8,     9,     10,    8,		10,    11,  
-		12,    14,    13,    12,	15,    14,  
-		16,    18,    17,    16,	19,    18,  
-		20,    22,    21,    20,	23,    22,  
+		0,  1,  2,  0,  2,  3,   // front
+		4,  5,  6,  4,  6,  7,   // right
+		8,  9,  10, 8,  10, 11,  // back
+		12, 14, 13, 12, 15, 14,  // left
+		16, 18, 17, 16, 19, 18,  // upper
+		20, 22, 21, 20, 23, 22,   // bottom
 
 		24,    25,    26,    24,    26,    27,
 		28,    29,    30,    28,    30,    31,
@@ -1102,28 +1129,28 @@ void Demo::BuildTexturedBoard()
 		64,    66,    65,    64,    67,    66,
 		68,    70,    69,    68,    71,    70,
 
-		72,	   73,	  74,	 72,	74,    75,
-		76,	   77,	  78,	 76,	78,    79,
-		80,	   81,	  82,	 80,	82,    83,
-		84,	   86,	  85,	 84,	87,    86,
-		88,	   90,	  89,	 88,	91,    90,
-		92,	   94,	  93,	 92,	95,    94,
+		72,73,74,72,74,75,
+		76,77,78,76,78,79,
+		80,81,82,80,82,83,
+		84,86,85,84,87,86,
+		88,90,89,88,91,90,
+		92,94,93,92,95,94,
 
-		96,	   97,	  98,    96,	98,	   99,
-	   100,	  101,	 102,   100,   102,   103,
-	   104,	  105,	 106,   104,   106,   107,
-	   108,	  110,	 109,   108,   111,   110,
-	   112,	  114,	 113,   112,   115,   114,
-	   116,	  118,	 117,   116,   119,   118,
+		96,	97,	98,	96,	98,	99,
+		100,	101,	102,	100,	102,	103,
+		104,	105,	106,	104,	106,	107,
+		108,	110,	109,	108,	111,	110,
+		112,	114,	113,	112,	115,	114,
+		116,	118,	117,	116,	119,	118,
 
 
-	   120,	  121,	 122,   120,   122,	  123,
-	   124,	  125,	 126,   124,   126,	  127,
-	   128,	  129,	 130,   128,   130,	  131,
-	   132,	  134,	 133,   132,   135,	  134,
-	   136,	  138,	 137,   136,   139,	  138,
-	   140,	  142,	 141,   140,   143,	  142
-					 
+		120,	121,	122,	120,	122,	123,
+		124,	125,	126,	124,	126,	127,
+		128,	129,	130,	128,	130,	131,
+		132,	134,	133,	132,	135,	134,
+		136,	138,	137,	136,	139,	138,
+		140,	142,	141,	140,	143,	142
+
 	};
 
 	glGenVertexArrays(1, &VAO7);
@@ -1138,17 +1165,17 @@ void Demo::BuildTexturedBoard()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO7);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	
+	// Position attribute
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), 0);
 	glEnableVertexAttribArray(0);
-	
+	// TexCoord attribute
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(5 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
 
-	glBindVertexArray(0); 
+	glBindVertexArray(0); // Unbind VAO
 }
 
 void Demo::DrawTexturedBoardIn()
@@ -1159,7 +1186,7 @@ void Demo::DrawTexturedBoardIn()
 	glBindTexture(GL_TEXTURE_2D, texture7);
 	glUniform1i(glGetUniformLocation(this->shaderProgram, "ourTexture"), 1);
 
-	glBindVertexArray(VAO7);
+	glBindVertexArray(VAO7); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 
 	glDrawElements(GL_TRIANGLES, 1000, GL_UNSIGNED_INT, 0);
 
@@ -1169,7 +1196,7 @@ void Demo::DrawTexturedBoardIn()
 
 void Demo::BuildTexturedBoardIn()
 {
-	 
+	// Load and create a texture 
 	glGenTextures(1, &texture8);
 	glBindTexture(GL_TEXTURE_2D, texture8);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -1184,14 +1211,14 @@ void Demo::BuildTexturedBoardIn()
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	
+	// Build geometry
 	GLfloat vertices[] = {
-
+		// format position, tex coords
 		//Bagian belakang
 		//Papan Tulis
 		-7.5f, 4.0f, 11.8f, 0.0f, 0.0f,0.0f,  0.0f,	1.0f, // back bottom right 6
-		 7.5f, 4.0f, 11.8f, 1.0f, 0.0f, 0.0f, 0.0f,	1.0f, // back bottom left 7
-		 7.5f, 9.0f, 11.8f, 1.0f, 1.0f, 0.0f, 0.0f,	1.0f, // front bottom right 5
+		7.5f, 4.0f, 11.8f, 1.0f, 0.0f, 0.0f,  0.0f,	1.0f,// back bottom left 7
+		7.5f, 9.0f, 11.8f, 1.0f, 1.0f, 0.0f,  0.0f,	1.0f,// front bottom right 5
 		-7.5f, 9.0f, 11.8f, 0.0f, 1.0f,0.0f,  0.0f,	1.0f, // front bottom left 4
 	};
 
@@ -1211,17 +1238,17 @@ void Demo::BuildTexturedBoardIn()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO8);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	
+	// Position attribute
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), 0);
 	glEnableVertexAttribArray(0);
-	
+	// TexCoord attribute
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(5 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
 
-	glBindVertexArray(0); 
+	glBindVertexArray(0); // Unbind VAO
 }
 
 void Demo::DrawTexturedBoard()
@@ -1232,7 +1259,7 @@ void Demo::DrawTexturedBoard()
 	glBindTexture(GL_TEXTURE_2D, texture8);
 	glUniform1i(glGetUniformLocation(this->shaderProgram, "ourTexture"), 1);
 
-	glBindVertexArray(VAO8);
+	glBindVertexArray(VAO8); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 
 	glDrawElements(GL_TRIANGLES, 1000, GL_UNSIGNED_INT, 0);
 
@@ -1278,7 +1305,6 @@ void Demo::StrafeCamera(float speed)
 	float orthoZ = x;
 
 	// left positive cameraspeed and right negative -cameraspeed.
-
 	posCamX = posCamX + orthoX * speed;
 	posCamZ = posCamZ + orthoZ * speed;
 	viewCamX = viewCamX + orthoX * speed;
