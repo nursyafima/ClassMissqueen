@@ -8,24 +8,16 @@ Demo::~Demo() {
 }
 
 void Demo::Init() {
-	// build and compile our shader program
-	// ------------------------------------
 	shaderProgram = BuildShader("vertexShader.vert", "fragmentShader.frag", nullptr);
 
-
-	BuildColoredPlane();
-
-	BuildColoredWall();
-
-	BuildColoredCeiling();
-
-	BuildColoredTable();
-
-	BuildColoredChair();
-
-	BuildColoredBoard();
-	BuildColoredBoardIn();
-	BuildColoredCube();
+	BuildTexturedFloor();
+	BuildTexturedWall();
+	BuildTexturedCeiling();
+	BuildTexturedTable();
+	BuildTexturedChair();
+	BuildTexturedBoard();
+	BuildTexturedBoardIn();
+	BuildTexturedLamp();
 	InitCamera();
 }
 
@@ -37,8 +29,6 @@ void Demo::DeInit() {
 	glDeleteBuffers(1, &EBO);
 }
 
-// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-// ---------------------------------------------------------------------------------------------------------
 void Demo::ProcessInput(GLFWwindow *window) {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true);
@@ -48,13 +38,13 @@ void Demo::ProcessInput(GLFWwindow *window) {
 	// -----------
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
 		if (fovy < 90) {
-			fovy += 0.0001f;
+			fovy += 0.001f;
 		}
 	}
 
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
 		if (fovy > 0) {
-			fovy -= 0.0001f;
+			fovy -= 0.001f;
 		}
 	}
 
@@ -116,9 +106,6 @@ void Demo::ProcessInput(GLFWwindow *window) {
 	}
 	RotateCamera(-angleY);
 
-
-
-
 }
 
 void Demo::Update(double deltaTime) {
@@ -132,11 +119,8 @@ void Demo::Render() {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	//glEnable(GL_CULL_FACE);
-
 	glEnable(GL_DEPTH_TEST);
-	//glEnable(GL_CULL_FACE);
-
+	
 
 	// Pass perspective projection matrix
 	glm::mat4 projection = glm::perspective(fovy, (GLfloat)this->screenWidth / (GLfloat)this->screenHeight, 0.1f, 100.0f);
@@ -157,71 +141,63 @@ void Demo::Render() {
 	glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
 
 
-	DrawColoredPlane();
-	DrawColoredWall();
-	DrawColoredCeiling();
-	DrawColoredTable();
-	DrawColoredChair();
-	DrawColoredBoard();
-	DrawColoredBoardIn();
-	DrawColoredCube();
-
-	glDisable(GL_DEPTH_TEST);
+	DrawTexturedFloor();
+	DrawTexturedWall();
+	DrawTexturedCeiling();
+	DrawTexturedTable();
+	DrawTexturedChair();
+	DrawTexturedBoard();
+	DrawTexturedBoardIn();
+	DrawTexturedLamp();
 }
 
-void Demo::BuildColoredCube() {
-	// load image into texture memory
-	// ------------------------------
-	// Load and create a texture 
+void Demo::BuildTexturedLamp() {
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	int width, height;
-	unsigned char* image = SOIL_load_image("merble.png", &width, &height, 0, SOIL_LOAD_RGBA);
+	unsigned char* image = SOIL_load_image("white.png", &width, &height, 0, SOIL_LOAD_RGBA);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	// set up vertex data (and buffer(s)) and configure vertex attributes
-	// ------------------------------------------------------------------
 	float vertices[] = {
-		// format position, tex coords
 		// front
-		-0.5, 12.5, 0.5, 0, 0,  1.0f,  1.0f,  0.0f, // 0
-		0.5, 12.5, 0.5, 1, 0,   1.0f,  1.0f,  0.0f, // 1
-		0.5,   13.0, 0.5, 1, 1, 1.0f,  1.0f,  0.0f,   // 2
-		-0.5,  13.0, 0.5, 0, 1, 1.0f,  1.0f,  0.0f,  // 3
+		0.0, 12.5, 1.0, 0, 0, -1.0f,  -1.0f,  -1.0f, // 0
+		1.0, 12.5, 1.0, 1, 0, -1.0f,  -1.0f,  -1.0f, // 1
+		1.0, 13.0, 1.0, 1, 1, -1.0f,  -1.0f,  -1.0f,   // 2
+		0.0, 13.0, 1.0, 0, 1, -1.0f,  -1.0f,  -1.0f,  // 3
 								
 		// right				
-		0.5,  13.0,  0.5, 0, 0, 1.0f,  1.0f,  1.0f, // 4
-		0.5,  13.0, -0.5, 1, 0, 1.0f,  1.0f,  1.0f, // 5
-		0.5, 12.5, -0.5, 1, 1,  1.0f,  1.0f,  1.0f,// 6
-		0.5, 12.5,  0.5, 0, 1,  1.0f,  1.0f,  1.0f,// 7
-											  
-		// back								  
-		-0.5, 12.5, -0.5, 0, 0, 1.0f,  1.0f,  1.0f,// 8 
-		0.5,  12.5, -0.5, 1, 0, 1.0f,  1.0f,  1.0f,// 9
-		0.5,   13.0, -0.5, 1, 1,1.0f,  1.0f,  1.0f, // 10
-		-0.5,  13.0, -0.5, 0, 1,1.0f,  1.0f,  1.0f, // 11
-											  
-		// left								  
-		-0.5, 12.5, -0.5, 0, 0, 1.0f,  1.0f,  1.0f,// 12
-		-0.5, 12.5,  0.5, 1, 0, 1.0f,  1.0f,  1.0f,// 13
-		-0.5,  13.0,  0.5, 1, 1,1.0f,  1.0f,  1.0f, // 14
-		-0.5,  13.0, -0.5, 0, 1,1.0f,  1.0f,  1.0f, // 15
-											  
-		// upper							  
-		0.5,  13.0,  0.5, 0, 0, 1.0f,  1.0f,  1.0f,  // 16
-		-0.5, 13.0,  0.5, 1, 0, 1.0f,  1.0f,  1.0f, // 17
-		-0.5, 13.0, -0.5, 1, 1, 1.0f,  1.0f,  1.0f, // 18
-		0.5,  13.0, -0.5, 0, 1, 1.0f,  1.0f,  1.0f,  // 19
-											  
-		// bottom							  
-		-0.5, 12.5, -0.5, 0, 0, 1.0f,  1.0f,  1.0f,// 20
-		0.5,  12.5, -0.5, 1, 0, 1.0f,  1.0f,  1.0f, // 21
-		0.5,  12.5,  0.5, 1, 1, 1.0f,  1.0f,  1.0f, // 22
-		-0.5, 12.5,  0.5, 0, 1, 1.0f,  1.0f,  1.0f,// 23
+		1.0, 13.0, 1.0, 0, 0, -1.0f,  -1.0f,  -1.0f, // 4
+		1.0, 13.0, 0.0, 1, 0, -1.0f,  -1.0f,  -1.0f, // 5
+		1.0, 12.5, 0.0, 1, 1, -1.0f,  -1.0f,  -1.0f,// 6
+		1.0, 12.5, 1.0, 0, 1, -1.0f,  -1.0f,  -1.0f,// 7
+								
+		// back					
+		0.0, 12.5, 0.0, 0, 0, -1.0f,  -1.0f,  -1.0f,// 8 
+		1.0, 12.5, 0.0, 1, 0, -1.0f,  -1.0f,  -1.0f,// 9
+		1.0, 13.0, 0.0, 1, 1, -1.0f,  -1.0f,  -1.0f, // 10
+		0.0, 13.0, 0.0, 0, 1, -1.0f,  -1.0f,  -1.0f, // 11
+								
+		// left					
+		0.0, 12.5, 0.0, 0, 0, -1.0f,  -1.0f,  -1.0f,// 12
+		0.0, 12.5, 1.0, 1, 0, -1.0f,  -1.0f,  -1.0f,// 13
+		0.0, 13.0, 1.0, 1, 1, -1.0f,  -1.0f,  -1.0f, // 14
+		0.0, 13.0, 0.0, 0, 1, -1.0f,  -1.0f,  -1.0f, // 15
+								
+		// upper				
+		1.0, 13.0, 1.0, 0, 0, -1.0f,  -1.0f,  -1.0f,  // 16
+		0.0, 13.0, 1.0, 1, 0, -1.0f,  -1.0f,  -1.0f, // 17
+		0.0, 13.0, 0.0, 1, 1, -1.0f,  -1.0f,  -1.0f, // 18
+		1.0, 13.0, 0.0, 0, 1, -1.0f,  -1.0f,  -1.0f,  // 19
+								
+		// bottom				
+		0.0, 12.5, 0.0, 0, 0, -1.0f,  -1.0f,  -1.0f,// 20
+		1.0, 12.5, 0.0, 1, 0, -1.0f,  -1.0f,  -1.0f, // 21
+		1.0, 12.5, 1.0, 1, 1, -1.0f,  -1.0f,  -1.0f, // 22
+		0.0, 12.5, 1.0, 0, 1, -1.0f,  -1.0f,  -1.0f,// 23
 	};
 
 	unsigned int indices[] = {
@@ -268,7 +244,7 @@ void Demo::BuildColoredCube() {
 
 }
 
-void Demo::DrawColoredCube()
+void Demo::DrawTexturedLamp()
 {
 	glUseProgram(shaderProgram);
 
@@ -283,7 +259,7 @@ void Demo::DrawColoredCube()
 	glBindVertexArray(0);
 }
 
-void Demo::BuildColoredPlane()
+void Demo::BuildTexturedFloor()
 {
 	// Load and create a texture 
 	glGenTextures(1, &texture2);
@@ -304,10 +280,10 @@ void Demo::BuildColoredPlane()
 	GLfloat vertices[] = {
 		// format position, tex coords
 		// bottom
-		-50.0, -0.5, -50.0,  0,  0,	0.0f,  -1.0f,  0.0f,
-		 50.0, -0.5, -50.0, 50,  0,	0.0f,  -1.0f,  0.0f,
-		 50.0, -0.5,  50.0, 50, 50,	0.0f,  -1.0f,  0.0f,
-		-50.0, -0.5,  50.0,  0, 50,	0.0f,  -1.0f,  0.0f,
+		-12.0, -0.5, -12.0,  0,  0,	0.0f,  -1.0f,  0.0f,
+		 12.0, -0.5, -12.0, 50,  0,	0.0f,  -1.0f,  0.0f,
+		 12.0, -0.5,  12.0, 50, 50,	0.0f,  -1.0f,  0.0f,
+		-12.0, -0.5,  12.0,  0, 50,	0.0f,  -1.0f,  0.0f,
 
 
 	};
@@ -339,7 +315,7 @@ void Demo::BuildColoredPlane()
 	glBindVertexArray(0); // Unbind VAO
 }
 
-void Demo::DrawColoredPlane()
+void Demo::DrawTexturedFloor()
 {
 	glUseProgram(shaderProgram);
 
@@ -361,7 +337,7 @@ void Demo::DrawColoredPlane()
 	glBindVertexArray(0);
 }
 
-void Demo::BuildColoredWall()
+void Demo::BuildTexturedWall()
 {
 	// Load and create a texture 
 	glGenTextures(1, &texture3);
@@ -382,25 +358,25 @@ void Demo::BuildColoredWall()
 	GLfloat vertices[] = {
 		// format position, tex coords
 		// bottom
-		-20.0, -0.5, -12.0, 0, 0,	0.0f,  0.0f,  -1.0f,//0
-		20.0, -0.5, -12.0 ,5, 0,	0.0f,  0.0f,  -1.0f,//1
-		20.0, 13.0, -12.0, 5, 3,	0.0f,  0.0f,  -1.0f,//2
-		-20.0, 13.0, -12.0, 0, 3,	0.0f,  0.0f,  -1.0f,//3
+		-12.0, -0.5, -12.0, 0, 0,	0.0f,  -0.4f,  -1.0f,//0
+		12.0, -0.5, -12.0 ,5, 0,	0.0f,  -0.4f,  -1.0f,//1
+		12.0, 13.0, -12.0, 5, 3,	0.0f,  -0.4f,  -1.0f,//2
+		-12.0, 13.0, -12.0, 0, 3,	0.0f,  -0.4f,  -1.0f,//3
 
-		-20.0, -0.5, 12.0, 0, 0,0.0f,  0.0f,  1.0f,//4
-		20.0, -0.5, 12.0 ,5, 0,	0.0f,  0.0f,  1.0f,//5
-		20.0, 13.0, 12.0, 5, 3,	0.0f,  0.0f,  1.0f,//6
-		-20.0, 13.0, 12.0, 0, 3,0.0f,  0.0f,  1.0f,//7
+		-12.0, -0.5, 12.0, 0, 0,0.0f,  -0.4f,  1.0f,//4
+		12.0, -0.5, 12.0 ,5, 0,	0.0f,  -0.4f,  1.0f,//5
+		12.0, 13.0, 12.0, 5, 3,	0.0f,  -0.4f,  1.0f,//6
+		-12.0, 13.0, 12.0, 0, 3,0.0f,  -0.4f,  1.0f,//7
 
-		-20.0, -0.5, -12.0, 0, 0, -1.0f,  0.0f,  0.0f,//8
-		-20.0, -0.5, 12.0 ,5, 0,  -1.0f,  0.0f,  0.0f,//9
-		-20.0, 13.0, 12.0, 5, 3,  -1.0f,  0.0f,  0.0f,//10
-		-20.0, 13.0, -12.0, 0, 3, -1.0f,  0.0f,  0.0f,//11
-
-		20.0, -0.5, -12.0, 0, 0,  1.0f,  0.0f,  0.0f,//12
-		20.0, -0.5, 12.0 ,5, 0,	  1.0f,  0.0f,  0.0f,//13
-		20.0, 13.0, 12.0, 5, 3,	  1.0f,  0.0f,  0.0f,//14
-		20.0, 13.0, -12.0, 0, 3,  1.0f,  0.0f,  0.0f//15
+		-12.0, -0.5, -12.0, 0, 0, -1.0f,  -0.4f,  0.0f,//8
+		-12.0, -0.5, 12.0 ,5, 0,  -1.0f,  -0.4f,  0.0f,//9
+		-12.0, 13.0, 12.0, 5, 3,  -1.0f,  -0.4f,  0.0f,//10
+		-12.0, 13.0, -12.0, 0, 3, -1.0f,  -0.4f,  0.0f,//11
+												
+		12.0, -0.5, -12.0, 0, 0,  1.0f,  -0.4f,  0.0f,//12
+		12.0, -0.5, 12.0 ,5, 0,	  1.0f,  -0.4f,  0.0f,//13
+		12.0, 13.0, 12.0, 5, 3,	  1.0f,  -0.4f,  0.0f,//14
+		12.0, 13.0, -12.0, 0, 3,  1.0f,  -0.4f,  0.0f//15
 	};
 
 	GLuint indices[] = {
@@ -435,7 +411,7 @@ void Demo::BuildColoredWall()
 	glBindVertexArray(0); // Unbind VAO
 }
 
-void Demo::DrawColoredWall()
+void Demo::DrawTexturedWall()
 {
 	glUseProgram(shaderProgram);
 
@@ -451,7 +427,7 @@ void Demo::DrawColoredWall()
 	glBindVertexArray(0);
 }
 
-void Demo::BuildColoredCeiling()
+void Demo::BuildTexturedCeiling()
 {
 	// Load and create a texture 
 	glGenTextures(1, &texture4);
@@ -472,10 +448,10 @@ void Demo::BuildColoredCeiling()
 	GLfloat vertices[] = {
 		// format position, tex coords
 		// bottom
-		-50.0, 13.0, -50.0,  0,  0,0.0f,  -1.0f,  0.0f,
-		 50.0, 13.0, -50.0, 50,  0,0.0f,  -1.0f,  0.0f,
-		 50.0, 13.0,  50.0, 50, 50,0.0f,  -1.0f,  0.0f,
-		-50.0, 13.0,  50.0,  0, 50,0.0f,  -1.0f,  0.0f,
+		-12.0, 13.0, -12.0,  0,  0,0.0f,  -1.0f,  0.0f,
+		 12.0, 13.0, -12.0, 50,  0,0.0f,  -1.0f,  0.0f,
+		 12.0, 13.0,  12.0, 50, 50,0.0f,  -1.0f,  0.0f,
+		-12.0, 13.0,  12.0,  0, 50,0.0f,  -1.0f,  0.0f,
 	};
 
 	GLuint indices[] = {
@@ -507,7 +483,7 @@ void Demo::BuildColoredCeiling()
 	glBindVertexArray(0); // Unbind VAO
 }
 
-void Demo::DrawColoredCeiling()
+void Demo::DrawTexturedCeiling()
 {
 	glUseProgram(shaderProgram);
 
@@ -523,7 +499,7 @@ void Demo::DrawColoredCeiling()
 	glBindVertexArray(0);
 }
 
-void Demo::BuildColoredTable()
+void Demo::BuildTexturedTable()
 {
 	// Load and create a texture 
 	glGenTextures(1, &texture5);
@@ -540,147 +516,104 @@ void Demo::BuildColoredTable()
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	// Build geometry
+
 	GLfloat vertices[] = {
-		// format position, tex coords
+	
 		//table top
 		// top
-		-4.5f,  2.4f, 1.5f, 0.0f, 0.0f, 0.0f,  1.0f,  0.0f, // front top left 0
-		4.5f, 2.4f, 1.5f,   1.0f, 0.0f, 0.0f,  1.0f,  0.0f,  // front top right 1
-		4.5f, 2.4f, -2.5f, 1.0f, 1.0f,  0.0f,  1.0f,  0.0f,  // back top right 2
+		-4.5f,  2.4f, 1.5f, 0.0f, 0.0f, 0.0f,  1.0f,  0.0f,  // front top left 0
+		4.5f,   2.4f, 1.5f,   1.0f, 0.0f, 0.0f,  1.0f,  0.0f,  // front top right 1
+		4.5f,   2.4f, -2.5f, 1.0f, 1.0f,  0.0f,  1.0f,  0.0f,  // back top right 2
 		-4.5f,  2.4f, -2.5f, 0.0f, 1.0f,0.0f,  1.0f,  0.0f,  // back top left 3 
 		//bottom
-		-4.5f, 2.2f, 1.5f,  0.0f, 0.0f, 0.0f,  -1.0f,  0.0f,// front bottom left 4
-		4.5f, 2.2f, 1.5f,   0.0f, 1.0f, 0.0f,  -1.0f,  0.0f,// front bottom right 5
-		4.5f, 2.2f, -2.5f, 1.0f, 1.0f,  0.0f,  -1.0f,  0.0f,// back bottom right 6
-		-4.5f, 2.2f, -2.5f, 0.0f, 1.0f, 0.0f,  -1.0f,  0.0f, // back bottom left 7 
+		-4.5f,  2.2f, 1.5f,  0.0f, 0.0f, 0.0f,  -0.1f,  5.8f,  // front bottom left 4
+		4.5f,   2.2f, 1.5f,   0.0f, 1.0f, 0.0f,  -0.1f,  5.8f,  // front bottom right 5
+		4.5f,   2.2f, -2.5f, 1.0f, 1.0f,  0.0f,  -0.1f,  5.8f,  // back bottom right 6
+		-4.5f,  2.2f, -2.5f, 0.0f, 1.0f, 0.0f,  -0.1f,  5.8f,  // back bottom left 7 
 		//front
-		-4.5f, 2.2f, 1.5f,  0.0f, 0.0f,0.0f,  0.0f,  1.0f, // front bottom left 8
-		4.5f, 2.2f, 1.5f,   0.0f, 1.0f,0.0f,  0.0f,  1.0f, // front bottom right 9
-		4.5f, 2.4f, 1.5f, 1.0f, 1.0f,  0.0f,  0.0f,  1.0f,// back bottom right 10
-		-4.5f, 2.4f, 1.5f, 0.0f, 1.0f, 0.0f,  0.0f,  1.0f, // back bottom left 11 
+		-4.5f,  2.2f, 1.5f,  0.0f, 0.0f,0.0f,  0.0f,  1.0f, // front bottom left 8
+		4.5f,   2.2f, 1.5f,   0.0f, 1.0f,0.0f,  0.0f,  1.0f, // front bottom right 9
+		4.5f,   2.4f, 1.5f, 1.0f, 1.0f,  0.0f,  0.0f,  1.0f,// back bottom right 10
+		-4.5f,  2.4f, 1.5f, 0.0f, 1.0f, 0.0f,  0.0f,  1.0f, // back bottom left 11 
 		//back
-		-4.5f, 2.2f, -2.5f,  0.0f, 0.0f,0.0f,  0.0f,  1.0f, // front bottom left 12
-		4.5f, 2.2f, -2.5f,   0.0f, 1.0f,0.0f,  0.0f,  1.0f, // front bottom right 13
-		4.5f, 2.4f, -2.5f,  1.0f, 1.0f, 0.0f,  0.0f,  1.0f, // back bottom right 14
-		-4.5f, 2.4f, -2.5f, 0.0f, 1.0f, 0.0f,  0.0f,  1.0f, // back bottom left 15 
+		-4.5f,  2.2f, -2.5f,  0.0f, 0.0f,0.0f,  0.0f,  1.0f, // front bottom left 12
+		4.5f,   2.2f, -2.5f,   0.0f, 1.0f,0.0f,  0.0f,  1.0f, // front bottom right 13
+		4.5f,   2.4f, -2.5f,  1.0f, 1.0f, 0.0f,  0.0f,  1.0f, // back bottom right 14
+		-4.5f,  2.4f, -2.5f, 0.0f, 1.0f, 0.0f,  0.0f,  1.0f, // back bottom left 15 
 		//right
-		4.5f, 2.2f, 1.5f,  0.0f, 0.0f,	-1.0f,  0.0f,  0.0f,	// front bottom left 16
-		4.5f, 2.2f, -2.5f,   0.0f, 1.0f,-1.0f,  0.0f,  0.0f, // front bottom right 17
-		4.5f, 2.4f, -2.5f,  1.0f, 1.0f, -1.0f,  0.0f,  0.0f, // back bottom right 18
-		4.5f, 2.4f, 1.5f, 0.0f, 1.0f,	-1.0f,  0.0f,  0.0f,	// back bottom left 19 
+		4.5f,   2.2f, 1.5f,  0.0f, 0.0f,	-1.0f,  0.0f,  0.0f,	// front bottom left 16
+		4.5f,   2.2f, -2.5f,   0.0f, 1.0f,-1.0f,  0.0f,  0.0f, // front bottom right 17
+		4.5f,   2.4f, -2.5f,  1.0f, 1.0f, -1.0f,  0.0f,  0.0f, // back bottom right 18
+		4.5f,   2.4f, 1.5f, 0.0f, 1.0f,	-1.0f,  0.0f,  0.0f,	// back bottom left 19 
 		//left
-		-4.5f, 2.2f, 1.5f,  0.0f, 0.0f,	  1.0f,  0.0f,  0.0f,		// front bottom left 20
-		-4.5f, 2.2f, -2.5f,   0.0f, 1.0f, 1.0f,  0.0f,  0.0f,// front bottom right 21
-		-4.5f, 2.4f, -2.5f,  1.0f, 1.0f,  1.0f,  0.0f,  0.0f,// back bottom right 22
-		-4.5f, 2.4f, 1.5f, 0.0f, 1.0f,	  1.0f,  0.0f,  0.0f,// back bottom left 23
+		-4.5f,   2.2f, 1.5f,  0.0f, 0.0f,	  1.0f,  0.0f,  0.0f,		// front bottom left 20
+		-4.5f,   2.2f, -2.5f,   0.0f, 1.0f, 1.0f,  0.0f,  0.0f,// front bottom right 21
+		-4.5f,   2.4f, -2.5f,  1.0f, 1.0f,  1.0f,  0.0f,  0.0f,// back bottom right 22
+		-4.5f,   2.4f, 1.5f, 0.0f, 1.0f,	  1.0f,  0.0f,  0.0f,// back bottom left 23
 
 		//left leg
-		//top
-		//-4.3f, 2.2f, 1.4f, 0.0f, 0.0f, // front top left 24
-		//-4.1f, 2.2f, 1.4f,  1.0f,  0.0f, // front top right 25
-		//-4.1f, 2.2f, -2.4f, 1.0f, 1.0f,  // back top right 26
-		//-4.3f, 2.2f, -2.4f, 0.0f, 1.0f,// back top left 27
-		////bottom
-		//-4.3f,  -0.5f, 1.4f,  0.0f, 0.0f,  // front bottom left 28
-		//-4.1f, -0.5f, 1.4f,  1.0f, 0.0f,   // front bottom right 29
-		//-4.1f, -0.5f, -2.4f, 1.0f,  1.0f,   // back bottom right 30
-		//-4.3f,  -0.5f, -2.4f,  0.0f, 1.0f,  // back bottom left 31
 		//front
-		-4.3f, 2.2f, 1.4f, 0.0f, 0.0f,	0.0f,  0.0f,  1.0f,	// front top left 32
-		-4.1f, 2.2f, 1.4f,  1.0f,  0.0f,0.0f,  0.0f,  1.0f, // front top right 33
-		-4.1f, -0.5f, 1.4f, 1.0f, 1.0f, 0.0f,  0.0f,  1.0f, // back top right 34
-		-4.3f, -0.5f, 1.4f, 0.0f, 1.0f,	0.0f,  0.0f,  1.0f,	// back top left 35
+		-4.3f, 2.2f, 1.4f, 0.0f, 0.0f,	0.0f,  0.0f,  1.0f,	  // front top left 32
+		-4.1f, 2.2f, 1.4f,  1.0f,  0.0f,0.0f,  0.0f,  1.0f,   // front top right 33
+		-4.1f, -0.5f, 1.4f, 1.0f, 1.0f, 0.0f,  0.0f,  1.0f,   // back top right 34
+		-4.3f, -0.5f, 1.4f, 0.0f, 1.0f,	0.0f,  0.0f,  1.0f,	  // back top left 35
 		//back
-		-4.3f, 2.2f, -2.4f, 0.0f, 0.0f,	 0.0f,  0.0f, -1.0f,	// front top left 36
-		-4.1f, 2.2f, -2.4f,  1.0f,  0.0f,0.0f,  0.0f, -1.0f, // front top right 37
-		-4.1f, -0.5f, -2.4f, 1.0f, 1.0f, 0.0f,  0.0f, -1.0f, // back top right 38
-		-4.3f, -0.5f, -2.4f, 0.0f, 1.0f, 0.0f,  0.0f, -1.0f,	// back top left 39
+		-4.3f, 2.2f, -2.4f, 0.0f, 0.0f,	 0.0f,  0.0f, -1.0f,  // front top left 36
+		-4.1f, 2.2f, -2.4f,  1.0f,  0.0f,0.0f,  0.0f, -1.0f,  // front top right 37
+		-4.1f, -0.5f, -2.4f, 1.0f, 1.0f, 0.0f,  0.0f, -1.0f,  // back top right 38
+		-4.3f, -0.5f, -2.4f, 0.0f, 1.0f, 0.0f,  0.0f, -1.0f,  // back top left 39
 		//left
-		-4.3f, 2.2f, 1.4f, 0.0f, 0.0f,    1.0f,  0.0f,  0.0f,// front top left 40
-		-4.3f, 2.2f, -2.4f,  1.0f,  0.0f, 1.0f,  0.0f,  0.0f,// front top right 41
-		-4.3f, -0.5f, -2.4f, 1.0f, 1.0f,  1.0f,  0.0f,  0.0f,// back top right 42
-		-4.3f, -0.5f, 1.4f, 0.0f, 1.0f,   1.0f,  0.0f,  0.0f,// back top left 43
+		-4.3f, 2.2f, 1.4f, 0.0f, 0.0f,    1.0f,  0.0f,  0.0f, // front top left 40
+		-4.3f, 2.2f, -2.4f,  1.0f,  0.0f, 1.0f,  0.0f,  0.0f, // front top right 41
+		-4.3f, -0.5f, -2.4f, 1.0f, 1.0f,  1.0f,  0.0f,  0.0f, // back top right 42
+		-4.3f, -0.5f, 1.4f, 0.0f, 1.0f,   1.0f,  0.0f,  0.0f, // back top left 43
 		//right
-		-4.1f, 2.2f, 1.4f, 0.0f, 0.0f,	 1.0f,  0.0f,  0.0f,	// front top left 44
-		-4.1f, 2.2f, -2.4f,  1.0f,  0.0f,1.0f,  0.0f,  0.0f, // front top right 45
-		-4.1f, -0.5f, -2.4f, 1.0f, 1.0f, 1.0f,  0.0f,  0.0f, // back top right 46
-		-4.1f, -0.5f, 1.4f, 0.0f, 1.0f,	 1.0f,  0.0f,  0.0f,	// back top left 47
+		-4.1f, 2.2f, 1.4f, 0.0f, 0.0f,	 1.0f,  0.0f,  9.0f,  // front top left 44
+		-4.1f, 2.2f, -2.4f,  1.0f,  0.0f,1.0f,  0.0f,  9.0f,  // front top right 45
+		-4.1f, -0.5f, -2.4f, 1.0f, 1.0f, 1.0f,  0.0f,  9.0f,  // back top right 46
+		-4.1f, -0.5f, 1.4f, 0.0f, 1.0f,	 1.0f,  0.0f,  9.0f,  // back top left 47
 		//right leg
-		////top
-		//4.1f, 2.2f, 1.4f,  0.0f, 0.0f, // front top left 48
-		//4.3f, 2.2f, 1.4f,  1.0f, 0.0f, // front top right 49
-		//4.3f, 2.2f, -2.4f, 1.0f, 1.0f,  // back top right 50
-		//4.1f, 2.2f, -2.4f, 0.0f, 1.0f,  // back top left 51
-		////bottom
-		//4.1f,  -0.5f, 1.4f,  0.0f, 0.0f,  // front bottom left 52
-		//4.3f, -0.5f, 1.4f,  1.0f, 0.0f,  // front bottom right 53
-		//4.3f, -0.5f, -2.4f, 1.0f, 1.0f,   // back bottom right 54
-		//4.1f,  -0.5f, -2.4f, 0.0f, 1.0f,  // back bottom left 55
 		//front
-		4.1f,  2.2f, 1.4f,  0.0f, 0.0f, 0.0f,  0.0f,  1.0f, // front bottom left 56
-		4.3f, 2.2f, 1.4f,  1.0f, 0.0f,  0.0f,  0.0f,  1.0f,// front bottom right 57
-		4.3f, -0.5f, 1.4f, 1.0f, 1.0f,  0.0f,  0.0f,  1.0f, // back bottom right 58
-		4.1f,  -0.5f, 1.4f, 0.0f, 1.0f, 0.0f,  0.0f,  1.0f, // back bottom left 59
+		4.1f,  2.2f, 1.4f,  0.0f, 0.0f, 0.0f,  0.0f,  1.0f,   // front bottom left 56
+		4.3f, 2.2f, 1.4f,  1.0f, 0.0f,  0.0f,  0.0f,  1.0f,   // front bottom right 57
+		4.3f, -0.5f, 1.4f, 1.0f, 1.0f,  0.0f,  0.0f,  1.0f,   // back bottom right 58
+		4.1f,  -0.5f, 1.4f, 0.0f, 1.0f, 0.0f,  0.0f,  1.0f,   // back bottom left 59
 		//back
 		4.1f,  2.2f, -2.4f,  0.0f, 0.0f, 0.0f,  0.0f,  -1.0f, // front bottom left 60
-		4.3f, 2.2f, -2.4f,  1.0f, 0.0f,  0.0f,  0.0f,  -1.0f,// front bottom right 61
+		4.3f, 2.2f, -2.4f,  1.0f, 0.0f,  0.0f,  0.0f,  -1.0f, // front bottom right 61
 		4.3f, -0.5f, -2.4f, 1.0f, 1.0f,  0.0f,  0.0f,  -1.0f, // back bottom right 62
 		4.1f,  -0.5f, -2.4f, 0.0f, 1.0f, 0.0f,  0.0f,  -1.0f, // back bottom left 63
 		//left
-		4.1f,  2.2f, 1.4f,  0.0f, 0.0f, 1.0f,  0.0f,  0.0f, // front bottom left 64
-		4.1f, 2.2f, -2.4f,  1.0f, 0.0f, 1.0f,  0.0f,  0.0f, // front bottom right 65
-		4.1f, -0.5f, -2.4f, 1.0f, 1.0f, 1.0f,  0.0f,  0.0f,  // back bottom right 66
-		4.1f,  -0.5f, 1.4f, 0.0f, 1.0f, 1.0f,  0.0f,  0.0f, // back bottom left 67
+		4.1f,  2.2f, 1.4f,  0.0f, 0.0f, -1.0f,  0.0f,  9.0f,  // front bottom left 64
+		4.1f, 2.2f, -2.4f,  1.0f, 0.0f, -1.0f,  0.0f,  9.0f,  // front bottom right 65
+		4.1f, -0.5f, -2.4f, 1.0f, 1.0f, -1.0f,  0.0f,  9.0f,  // back bottom right 66
+		4.1f,  -0.5f, 1.4f, 0.0f, 1.0f, -1.0f,  0.0f,  9.0f,  // back bottom left 67
 		//right
-		4.3f,  2.2f, 1.4f,  0.0f, 0.0f,  -1.0f,  0.0f,  0.0f,// front bottom left 68
-		4.3f, 2.2f, -2.4f,  1.0f, 0.0f,  -1.0f,  0.0f,  0.0f,// front bottom right 69
-		4.3f, -0.5f, -2.4f, 1.0f, 1.0f,  -1.0f,  0.0f,  0.0f, // back bottom right 70
-		4.3f,  -0.5f, 1.4f, 0.0f, 1.0f,  -1.0f,  0.0f,  0.0f,// back bottom left 71
+		4.3f,  2.2f, 1.4f,  0.0f, 0.0f, -1.0f,  0.0f,  0.0f,  // front bottom left 68
+		4.3f, 2.2f, -2.4f,  1.0f, 0.0f, -1.0f,  0.0f,  0.0f,  // front bottom right 69
+		4.3f, -0.5f, -2.4f, 1.0f, 1.0f, -1.0f,  0.0f,  0.0f,  // back bottom right 70
+		4.3f,  -0.5f, 1.4f, 0.0f, 1.0f, -1.0f,  0.0f,  0.0f,  // back bottom left 71
 		//front shield
 		//top
-		-4.1f, 2.2f, 1.4f, 0.0f,  0.0f,0.0f,  -1.0f,  0.0f, // front top left 72
-		4.1f, 2.2f, 1.4f,  1.0f, 0.0f, 0.0f,  -1.0f,  0.0f, // front top right 73
-		4.1f, 2.2f, 1.2f,  1.0f, 1.0f, 0.0f,  -1.0f,  0.0f, // back top right 74
-		-4.1f, 2.2f, 1.2f, 0.0f, 1.0f, 0.0f,  -1.0f,  0.0f, // back top left 75
+		-4.1f, 2.2f, 1.4f, 0.0f,  0.0f,0.0f,  -1.0f,  0.0f,   // front top left 72
+		4.1f, 2.2f, 1.4f,  1.0f, 0.0f, 0.0f,  -1.0f,  0.0f,   // front top right 73
+		4.1f, 2.2f, 1.2f,  1.0f, 1.0f, 0.0f,  -1.0f,  0.0f,   // back top right 74
+		-4.1f, 2.2f, 1.2f, 0.0f, 1.0f, 0.0f,  -1.0f,  0.0f,   // back top left 75
 		//bottom
-		-4.1f,  0.2f, 1.4f, 0.0f, 0.0f, 0.0f,  -1.0f,  0.0f,  // front bottom left 76
-		4.1f, 0.2f, 1.4f,  1.0f, 0.0f,  0.0f,  -1.0f,  0.0f, // front bottom right 77
-		4.1f, 0.2f, 1.2f, 1.0f, 1.0f,   0.0f,  -1.0f,  0.0f, // back bottom right 78
-		-4.1f,  0.2f, 1.2f, 0.0f, 1.0f, 0.0f,  -1.0f,  0.0f, // back bottom left 79
+		-4.1f,  0.2f, 1.4f, 0.0f, 0.0f, 0.0f,  -1.0f,  1.0f,  // front bottom left 76
+		4.1f, 0.2f, 1.4f,  1.0f, 0.0f,  0.0f,  -1.0f,  1.0f,  // front bottom right 77
+		4.1f, 0.2f, 1.2f, 1.0f, 1.0f,   0.0f,  -1.0f,  1.0f,  // back bottom right 78
+		-4.1f,  0.2f, 1.2f, 0.0f, 1.0f, 0.0f,  -1.0f,  1.0f,  // back bottom left 79
 		//front
-		-4.1f, 2.2f, 1.4f, 0.0f, 0.0f, 0.0f,  0.0f,  1.0f,  // front bottom left 80
-		4.1f, 2.2f, 1.4f, 1.0f, 0.0f,  0.0f,  0.0f,  1.0f, // front bottom right 81
-		4.1f, 0.2f, 1.4f, 1.0f, 1.0f,  0.0f,  0.0f,  1.0f,  // back bottom right 82
-		-4.1f, 0.2f, 1.4f, 0.0f, 1.0f, 0.0f,  0.0f,  1.0f, // back bottom left 83
+		-4.1f, 2.2f, 1.4f, 0.0f, 0.0f, 0.0f,  0.0f,  -1.0f,   // front bottom left 80
+		4.1f, 2.2f, 1.4f, 1.0f, 0.0f,  0.0f,  0.0f,  -1.0f,   // front bottom right 81
+		4.1f, 0.2f, 1.4f, 1.0f, 1.0f,  0.0f,  0.0f,  -1.0f,   // back bottom right 82
+		-4.1f, 0.2f, 1.4f, 0.0f, 1.0f, 0.0f,  0.0f,  -1.0f,   // back bottom left 83
 		//back
-		-4.1f, 2.2f, 1.2f, 0.0f, 0.0f,0.0f,  0.0f,  1.0f,   // front bottom left 84
-		4.1f, 2.2f, 1.2f, 1.0f, 0.0f, 0.0f,  0.0f,  1.0f,  // front bottom right 85
-		4.1f, 0.2f, 1.2f, 1.0f, 1.0f, 0.0f,  0.0f,  1.0f,   // back bottom right 86
-		-4.1f, 0.2f, 1.2f, 0.0f, 1.0f,0.0f,  0.0f,  1.0f,  // back bottom left 87
-		////left
-		//-4.1f, 2.2f, 1.4f, 0.0f, 0.0f,   // front bottom left 88
-		//-4.1f, 2.2f, 1.4f, 1.0f, 0.0f,   // front bottom right 89
-		//-4.1f, 0.2f, 1.2f, 1.0f, 1.0f,    // back bottom right 90
-		//-4.1f, 0.2f, 1.2f, 0.0f, 1.0f,  // back bottom left 91
-		////right
-		//4.1f, 2.2f, 1.4f, 0.0f, 0.0f,   // front bottom left 92
-		//4.1f, 2.2f, 1.4f, 1.0f, 0.0f,   // front bottom right 93
-		//4.1f, 0.2f, 1.2f, 1.0f, 1.0f,    // back bottom right 94
-		//4.1f, 0.2f, 1.2f, 0.0f, 1.0f,  // back bottom left 95
-
-		//drawer
-		//-4.1f, 2.2f, 1.2f, 0.0f, 0.0f, // front top left 32
-		//-2.0f, 2.2f, 1.2f,  1.0f, 0.0f,  // front top right 33
-		//-2.0f, 2.2f, -2.4f, 1.0f, 1.0f, // back top right 34
-		//-4.1f, 2.2f, -2.4f, 0.0f, 1.0f,  // back top left 35
-
-		//-4.1f,  0.5f, 1.2f, 0.0f, 0.0f,   // front bottom left 36
-		//-2.0f, 0.5f, 1.2f,  1.0f, 0.0f,   // front bottom right 37
-		//-2.0f, 0.5f, -2.4f, 1.0f, 1.0f,    // back bottom right 38
-		//-4.1f,  0.5f, -2.4f, 0.0f, 1.0f
-
-
+		-4.1f, 2.2f, 1.2f, 0.0f, 0.0f,0.0f,  0.0f,  1.0f,     // front bottom left 84
+		4.1f, 2.2f, 1.2f, 1.0f, 0.0f, 0.0f,  0.0f,  1.0f,     // front bottom right 85
+		4.1f, 0.2f, 1.2f, 1.0f, 1.0f, 0.0f,  0.0f,  1.0f,     // back bottom right 86
+		-4.1f, 0.2f, 1.2f, 0.0f, 1.0f,0.0f,  0.0f,  1.0f,     // back bottom left 87
 	};
 
 	GLuint indices[] = {
@@ -689,30 +622,30 @@ void Demo::BuildColoredTable()
 		8,  9,  10, 8,  10, 11,  // back
 		12, 14, 13, 12, 15, 14,  // left
 		16, 18, 17, 16, 19, 18,  // upper
-		20, 22, 21, 20, 23, 22,   // bottom
+		20, 22, 21, 20, 23, 22,  // bottom
 
-		24,	25,	26,	24,	26,	27,
-		28,	29,	30,	28,	30,	31,
-		32,	33,	34,	32,	34,	35,
-		36,	38,	37,	36,	39,	38,
-		40,	42,	41,	40,	43,	42,
-		44,	46,	45,	44,	47,	46,
-
-
-		48,	49,	50,	48,	50,	51,
-		52,	53,	54,	52,	54,	55,
-		56,	57,	58,	56,	58,	59,
-		60,	62,	61,	60,	63,	62,
-		64,	66,	65,	64,	67,	66,
-		68,	70,	69,	68,	71,	70,
+		24,	25,	26,	24,	26,	27,  // top
+		28,	29,	30,	28,	30,	31,	 // right
+		32,	33,	34,	32,	34,	35,	 // back
+		36,	38,	37,	36,	39,	38,	 // left
+		40,	42,	41,	40,	43,	42,	 // upper
+		44,	46,	45,	44,	47,	46,	 // bottom
 
 
-		72,	73,	74,	72,	74,	75,
-		76,	77,	78,	76,	78,	79,
-		80,	81,	82, 80,	82,	83,
-		84,	86,	85,	84,	87,	86,
-		88,	90,	89,	88,	91,	90,
-		92,	94,	93,	92,	95,	94
+		48,	49,	50,	48,	50,	51,  // top
+		52,	53,	54,	52,	54,	55,	 // right
+		56,	57,	58,	56,	58,	59,	 // back
+		60,	62,	61,	60,	63,	62,	 // left
+		64,	66,	65,	64,	67,	66,	 // upper
+		68,	70,	69,	68,	71,	70,	 // bottom
+
+
+		72,	73,	74,	72,	74,	75,  // top
+		76,	77,	78,	76,	78,	79,	 // right
+		80,	81,	82, 80,	82,	83,	 // back
+		84,	86,	85,	84,	87,	86,	 // left
+		88,	90,	89,	88,	91,	90,	 // upper
+		92,	94,	93,	92,	95,	94	 // bottom
 
 
 	};
@@ -741,7 +674,7 @@ void Demo::BuildColoredTable()
 	glBindVertexArray(0); // Unbind VAO
 }
 
-void Demo::DrawColoredTable()
+void Demo::DrawTexturedTable()
 {
 	glUseProgram(shaderProgram);
 
@@ -757,7 +690,7 @@ void Demo::DrawColoredTable()
 	glBindVertexArray(0);
 }
 
-void Demo::BuildColoredChair()
+void Demo::BuildTexturedChair()
 {
 	// Load and create a texture 
 	glGenTextures(1, &texture6);
@@ -816,10 +749,10 @@ void Demo::BuildColoredChair()
 		1.0f, 1.6f, -4.7f, 1.0f, 1.0f,	0.0f,  1.0f,  0.0f, 	// back top right 26
 		-1.0f,  1.6f, -4.7f, 0.0f, 1.0f,0.0f,  1.0f,  0.0f, 	// back top left 27
 		//bottom
-		-1.0f, 1.4f, -2.5f, 0.0f, 0.0f,	0.0f,  -1.0f,  0.0f,	// front bottom left 28
-		1.0f, 1.4f, -2.5f,  1.0f,0.0f,	0.0f,  -1.0f,  0.0f,	//	 front bottom right 29
-		1.0f, 1.4f, -4.7f, 1.0f, 1.0f,	0.0f,  -1.0f,  0.0f,	//	 back bottom right 30
-		-1.0f, 1.4f, -4.7f, 0.0f, 1.0f,	0.0f,  -1.0f,  0.0f,		// back bottom left 31
+		-1.0f, 1.4f, -2.5f, 0.0f, 0.0f,	0.0f,  -1.0f,  7.0f,	// front bottom left 28
+		1.0f, 1.4f, -2.5f,  1.0f,0.0f,	0.0f,  -1.0f,  7.0f,	//	 front bottom right 29
+		1.0f, 1.4f, -4.7f, 1.0f, 1.0f,	0.0f,  -1.0f,  7.0f,	//	 back bottom right 30
+		-1.0f, 1.4f, -4.7f, 0.0f, 1.0f,	0.0f,  -1.0f,  7.0f,		// back bottom left 31
 		//front
 		-1.0f,  1.6f, -2.5f,  0.0f, 0.0f,0.0f,  0.0f,	1.0f,	  // front top left 32
 		1.0f, 1.6f, -2.5f,  1.0f, 0.0f,	0.0f,  0.0f,	1.0f,	 // front top right 33
@@ -991,10 +924,10 @@ void Demo::BuildColoredChair()
 		64,    66,    65,    64,    67,    66,
 		68,    70,    69,    68,    71,    70,
 
-		72,73,74,72,74,75,
-		76,77,78,76,78,79,
-		80,81,82,80,82,83,
-		84,86,85,84,87,86,
+		72,    73,74,72,74,75,
+		76,    77,78,76,78,79,
+		80,    81,82,80,82,83,
+		84,   86,85,84,87,86,
 		88,90,89,88,91,90,
 		92,94,93,92,95,94,
 
@@ -1040,7 +973,7 @@ void Demo::BuildColoredChair()
 	glBindVertexArray(0); // Unbind VAO
 }
 
-void Demo::DrawColoredChair()
+void Demo::DrawTexturedChair()
 {
 	glUseProgram(shaderProgram);
 
@@ -1063,7 +996,7 @@ void Demo::DrawColoredChair()
 	glBindVertexArray(0);
 }
 
-void Demo::BuildColoredBoard()
+void Demo::BuildTexturedBoard()
 {
 	// Load and create a texture 
 	glGenTextures(1, &texture7);
@@ -1260,7 +1193,7 @@ void Demo::BuildColoredBoard()
 	glBindVertexArray(0); // Unbind VAO
 }
 
-void Demo::DrawColoredBoardIn()
+void Demo::DrawTexturedBoardIn()
 {
 	glUseProgram(shaderProgram);
 
@@ -1276,7 +1209,7 @@ void Demo::DrawColoredBoardIn()
 	glBindVertexArray(0);
 }
 
-void Demo::BuildColoredBoardIn()
+void Demo::BuildTexturedBoardIn()
 {
 	// Load and create a texture 
 	glGenTextures(1, &texture8);
@@ -1333,7 +1266,7 @@ void Demo::BuildColoredBoardIn()
 	glBindVertexArray(0); // Unbind VAO
 }
 
-void Demo::DrawColoredBoard()
+void Demo::DrawTexturedBoard()
 {
 	glUseProgram(shaderProgram);
 
@@ -1400,6 +1333,7 @@ void Demo::VerticalCamera(float speed) {
 	posCamY = posCamY + y * speed;
 	viewCamY = viewCamY + y * speed;
 }
+
 void Demo::RotateCamera(float speed)
 {
 	float x = viewCamX - posCamX;
@@ -1408,8 +1342,7 @@ void Demo::RotateCamera(float speed)
 	viewCamX = (float)(posCamX + glm::cos(speed) * x - glm::sin(speed) * z);
 }
 
-
 int main(int argc, char** argv) {
-	RenderEngine &app = Demo();
-	app.Start("Camera: Free Camera Implementation", 800, 600, false, false);
+	
+	Demo().Start("Project Grafkom: Class Missqueen", 1920, 1080, false, true);
 }
