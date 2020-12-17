@@ -1,7 +1,8 @@
 ﻿  Demo.cpp
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'D:\Kuliah\Semester 5\GRAFKOM\ClassMissqueen\vs\Debug\vc110.pdb'; linking object as if no debug info
-SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'D:\Kuliah\Semester 5\GRAFKOM\ClassMissqueen\vs\Debug\vc110.pdb'; linking object as if no debug info
-SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'D:\Kuliah\Semester 5\GRAFKOM\ClassMissqueen\vs\Debug\vc110.pdb'; linking object as if no debug info
-SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'D:\Kuliah\Semester 5\GRAFKOM\ClassMissqueen\vs\Debug\vc110.pdb'; linking object as if no debug info
-  ClassMissqueen.vcxproj -> D:\Kuliah\Semester 5\GRAFKOM\ClassMissqueen\vs\Debug\ClassMissqueen.exe
+SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'D:\Kuliah\ClassMissqueen\vs\Debug\vc110.pdb'; linking object as if no debug info
+SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'D:\Kuliah\ClassMissqueen\vs\Debug\vc110.pdb'; linking object as if no debug info
+SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'D:\Kuliah\ClassMissqueen\vs\Debug\vc110.pdb'; linking object as if no debug info
+SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'D:\Kuliah\ClassMissqueen\vs\Debug\vc110.pdb'; linking object as if no debug info
+  ClassMissqueen.vcxproj -> D:\Kuliah\ClassMissqueen\vs\Debug\ClassMissqueen.exe
+  ClassMissqueen.vcxproj -> D:\Kuliah\ClassMissqueen\vs\Debug\ClassMissqueen.pdb (Partial PDB)

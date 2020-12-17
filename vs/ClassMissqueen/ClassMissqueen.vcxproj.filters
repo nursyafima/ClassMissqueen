@@ -72,5 +72,11 @@
     <Image Include="3.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="lampu.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="white.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
