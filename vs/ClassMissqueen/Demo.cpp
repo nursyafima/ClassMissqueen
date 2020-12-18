@@ -115,7 +115,7 @@ void Demo::Render() {
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_DEPTH_TEST);
-	
+
 
 	// Pass perspective projection matrix
 	glm::mat4 projection = glm::perspective(fovy, (GLfloat)this->screenWidth / (GLfloat)this->screenHeight, 0.1f, 100.0f);
@@ -163,31 +163,31 @@ void Demo::BuildTexturedLamp() {
 		1.0, 12.5, 1.0, 1, 0, -1.0f,  -1.0f,  -1.0f, // 1
 		1.0, 13.0, 1.0, 1, 1, -1.0f,  -1.0f,  -1.0f,   // 2
 		0.0, 13.0, 1.0, 0, 1, -1.0f,  -1.0f,  -1.0f,  // 3
-								
+
 		// right				
 		1.0, 13.0, 1.0, 0, 0, -1.0f,  -1.0f,  -1.0f, // 4
 		1.0, 13.0, 0.0, 1, 0, -1.0f,  -1.0f,  -1.0f, // 5
 		1.0, 12.5, 0.0, 1, 1, -1.0f,  -1.0f,  -1.0f,// 6
 		1.0, 12.5, 1.0, 0, 1, -1.0f,  -1.0f,  -1.0f,// 7
-								
+
 		// back					
 		0.0, 12.5, 0.0, 0, 0, -1.0f,  -1.0f,  -1.0f,// 8 
 		1.0, 12.5, 0.0, 1, 0, -1.0f,  -1.0f,  -1.0f,// 9
 		1.0, 13.0, 0.0, 1, 1, -1.0f,  -1.0f,  -1.0f, // 10
 		0.0, 13.0, 0.0, 0, 1, -1.0f,  -1.0f,  -1.0f, // 11
-								
+
 		// left					
 		0.0, 12.5, 0.0, 0, 0, -1.0f,  -1.0f,  -1.0f,// 12
 		0.0, 12.5, 1.0, 1, 0, -1.0f,  -1.0f,  -1.0f,// 13
 		0.0, 13.0, 1.0, 1, 1, -1.0f,  -1.0f,  -1.0f, // 14
 		0.0, 13.0, 0.0, 0, 1, -1.0f,  -1.0f,  -1.0f, // 15
-								
+
 		// upper				
 		1.0, 13.0, 1.0, 0, 0, -1.0f,  -1.0f,  -1.0f,  // 16
 		0.0, 13.0, 1.0, 1, 0, -1.0f,  -1.0f,  -1.0f, // 17
 		0.0, 13.0, 0.0, 1, 1, -1.0f,  -1.0f,  -1.0f, // 18
 		1.0, 13.0, 0.0, 0, 1, -1.0f,  -1.0f,  -1.0f,  // 19
-								
+
 		// bottom				
 		0.0, 12.5, 0.0, 0, 0, -1.0f,  -1.0f,  -1.0f,// 20
 		1.0, 12.5, 0.0, 1, 0, -1.0f,  -1.0f,  -1.0f, // 21
@@ -207,7 +207,7 @@ void Demo::BuildTexturedLamp() {
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
-	
+
 	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -308,7 +308,7 @@ void Demo::DrawTexturedFloor()
 	glBindTexture(GL_TEXTURE_2D, texture2);
 	glUniform1i(glGetUniformLocation(this->shaderProgram, "ourTexture"), 1);
 
-	glBindVertexArray(VAO2); 
+	glBindVertexArray(VAO2);
 	GLint objectColorLoc = glGetUniformLocation(this->shaderProgram, "objectColor");
 	glUniform3f(objectColorLoc, 0.8f, 0.8f, 0.8f);
 
@@ -324,7 +324,7 @@ void Demo::DrawTexturedFloor()
 
 void Demo::BuildTexturedWall()
 {
-	 
+
 	glGenTextures(1, &texture3);
 	glBindTexture(GL_TEXTURE_2D, texture3);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -339,24 +339,24 @@ void Demo::BuildTexturedWall()
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	
+
 	GLfloat vertices[] = {
-		
+
 		-12.0, -0.5, -12.0, 0, 0, 0.0f,  -0.4f,  -1.0f,//0
 		 12.0, -0.5, -12.0, 5, 0, 0.0f,  -0.4f,  -1.0f,//1
 		 12.0, 13.0, -12.0, 5, 3, 0.0f,  -0.4f,  -1.0f,//2
 		-12.0, 13.0, -12.0, 0, 3, 0.0f,  -0.4f,  -1.0f,//3
-								  
+
 		-12.0, -0.5,  12.0,	0, 0, 0.0f,  -0.4f,  1.0f,//4
 		 12.0, -0.5,  12.0,	5, 0, 0.0f,  -0.4f,  1.0f,//5
 		 12.0, 13.0,  12.0,	5, 3, 0.0f,  -0.4f,  1.0f,//6
 		-12.0, 13.0,  12.0,	0, 3, 0.0f,  -0.4f,  1.0f,//7
-								  
+
 		-12.0, -0.5, -12.0, 0, 0, -1.0f,  -0.4f,  0.0f,//8
 		-12.0, -0.5,  12.0,	5, 0, -1.0f,  -0.4f,  0.0f,//9
 		-12.0, 13.0,  12.0,	5, 3, -1.0f,  -0.4f,  0.0f,//10
 		-12.0, 13.0, -12.0, 0, 3, -1.0f,  -0.4f,  0.0f,//11
-												
+
 		12.0, -0.5, -12.0,	0, 0,  1.0f,  -0.4f,  0.0f,//12
 		12.0, -0.5,  12.0,	5, 0,  1.0f,  -0.4f,  0.0f,//13
 		12.0, 13.0,  12.0,	5, 3,  1.0f,  -0.4f,  0.0f,//14
@@ -383,10 +383,10 @@ void Demo::BuildTexturedWall()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO3);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	
+
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), 0);
 	glEnableVertexAttribArray(0);
-	
+
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 
@@ -414,7 +414,7 @@ void Demo::DrawTexturedWall()
 
 void Demo::BuildTexturedCeiling()
 {
- 
+
 	glGenTextures(1, &texture4);
 	glBindTexture(GL_TEXTURE_2D, texture4);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -429,9 +429,9 @@ void Demo::BuildTexturedCeiling()
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	
+
 	GLfloat vertices[] = {
-		
+
 		// bottom
 		-12.0, 13.0, -12.0,  0,  0,0.0f,  -1.0f,  0.0f,
 		 12.0, 13.0, -12.0, 50,  0,0.0f,  -1.0f,  0.0f,
@@ -486,7 +486,7 @@ void Demo::DrawTexturedCeiling()
 
 void Demo::BuildTexturedTable()
 {
-	
+
 	glGenTextures(1, &texture5);
 	glBindTexture(GL_TEXTURE_2D, texture5);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -503,7 +503,7 @@ void Demo::BuildTexturedTable()
 
 
 	GLfloat vertices[] = {
-	
+
 		//table top
 		// top
 		-4.5f,   2.4f,  1.5f, 0.0f, 0.0f, 0.0f, 1.0f,  0.0f,  // front top left 0
@@ -677,7 +677,7 @@ void Demo::DrawTexturedTable()
 
 void Demo::BuildTexturedChair()
 {
-	
+
 	glGenTextures(1, &texture6);
 	glBindTexture(GL_TEXTURE_2D, texture6);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -692,9 +692,9 @@ void Demo::BuildTexturedChair()
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	
+
 	GLfloat vertices[] = {
-		
+
 		//Bagian belakang
 		//top
 		-1.0f,  4.0f, -4.7f, 0.0f, 0.0f,  0.0f,  1.0f,  0.0f, // 0
@@ -744,7 +744,7 @@ void Demo::BuildTexturedChair()
 		1.0f,  1.4f, -2.5f,  1.0f, 1.0f,  0.0f,  0.0f, 1.0f,  // back top right 34
 	   -1.0f,  1.4f, -2.5f,  0.0f, 1.0f,  0.0f,  0.0f, 1.0f,  // back top left 35
 		//back							  
-       -1.0f,  1.6f, -4.7f,  0.0f, 0.0f,  0.0f,  0.0f,-1.0f,  // front bottom left 36
+	   -1.0f,  1.6f, -4.7f,  0.0f, 0.0f,  0.0f,  0.0f,-1.0f,  // front bottom left 36
 		1.0f,  1.6f, -4.7f,  1.0f, 0.0f,  0.0f,  0.0f,-1.0f,  // front bottom right 37
 		1.0f,  1.4f, -4.7f,  1.0f, 1.0f,  0.0f,  0.0f,-1.0f,  // back bottom right 38
 	   -1.0f,  1.4f, -4.7f,  0.0f, 1.0f,  0.0f,  0.0f,-1.0f,  // back bottom left 39
@@ -888,12 +888,12 @@ void Demo::BuildTexturedChair()
 	};
 
 	GLuint indices[] = {
-		0,     1,	  2,	 0,		2,	   3,  
-		4,     5,	  6,	 4,		6,	   7,  
-		8,     9,	  10,	 8,		10,	   11, 
-		12,    14,	  13,	 12,	15,	   14, 
-		16,    18,	  17,	 16,	19,	   18, 
-		20,    22,	  21,	 20,	23,	   22, 
+		0,     1,	  2,	 0,		2,	   3,
+		4,     5,	  6,	 4,		6,	   7,
+		8,     9,	  10,	 8,		10,	   11,
+		12,    14,	  13,	 12,	15,	   14,
+		16,    18,	  17,	 16,	19,	   18,
+		20,    22,	  21,	 20,	23,	   22,
 
 		24,    25,    26,    24,    26,    27,
 		28,    29,    30,    28,    30,    31,
@@ -945,17 +945,17 @@ void Demo::BuildTexturedChair()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO6);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	
+
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), 0);
 	glEnableVertexAttribArray(0);
-	
+
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
-	
+
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(5 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
 
-	glBindVertexArray(0); 
+	glBindVertexArray(0);
 }
 
 void Demo::DrawTexturedChair()
@@ -973,7 +973,7 @@ void Demo::DrawTexturedChair()
 	GLint shininessMatLoc = glGetUniformLocation(this->shaderProgram, "material.shininess");
 	glUniform1f(shininessMatLoc, 1.0f);
 
-	glBindVertexArray(VAO6); 
+	glBindVertexArray(VAO6);
 
 	glDrawElements(GL_TRIANGLES, 1000, GL_UNSIGNED_INT, 0);
 
@@ -998,7 +998,7 @@ void Demo::BuildTexturedBoard()
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	
+
 	GLfloat vertices[] = {
 
 		//Pinggir Kiri
@@ -1081,12 +1081,12 @@ void Demo::BuildTexturedBoard()
 	};
 
 	GLuint indices[] = {
-		0,     1,     2,     0,		2,     3,   
-		4,     5,     6,     4,		6,     7,   
-		8,     9,     10,    8,		10,    11,  
-		12,    14,    13,    12,	15,    14,  
-		16,    18,    17,    16,	19,    18,  
-		20,    22,    21,    20,	23,    22,  
+		0,     1,     2,     0,		2,     3,
+		4,     5,     6,     4,		6,     7,
+		8,     9,     10,    8,		10,    11,
+		12,    14,    13,    12,	15,    14,
+		16,    18,    17,    16,	19,    18,
+		20,    22,    21,    20,	23,    22,
 
 		24,    25,    26,    24,    26,    27,
 		28,    29,    30,    28,    30,    31,
@@ -1123,7 +1123,7 @@ void Demo::BuildTexturedBoard()
 	   132,	  134,	 133,   132,   135,	  134,
 	   136,	  138,	 137,   136,   139,	  138,
 	   140,	  142,	 141,   140,   143,	  142
-					 
+
 	};
 
 	glGenVertexArrays(1, &VAO7);
@@ -1138,17 +1138,17 @@ void Demo::BuildTexturedBoard()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO7);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	
+
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), 0);
 	glEnableVertexAttribArray(0);
-	
+
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(5 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
 
-	glBindVertexArray(0); 
+	glBindVertexArray(0);
 }
 
 void Demo::DrawTexturedBoardIn()
@@ -1169,7 +1169,7 @@ void Demo::DrawTexturedBoardIn()
 
 void Demo::BuildTexturedBoardIn()
 {
-	 
+
 	glGenTextures(1, &texture8);
 	glBindTexture(GL_TEXTURE_2D, texture8);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -1184,7 +1184,7 @@ void Demo::BuildTexturedBoardIn()
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	
+
 	GLfloat vertices[] = {
 
 		//Bagian belakang
@@ -1211,17 +1211,17 @@ void Demo::BuildTexturedBoardIn()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO8);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	
+
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), 0);
 	glEnableVertexAttribArray(0);
-	
+
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(5 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
 
-	glBindVertexArray(0); 
+	glBindVertexArray(0);
 }
 
 void Demo::DrawTexturedBoard()
@@ -1302,6 +1302,6 @@ void Demo::RotateCamera(float speed)
 }
 
 int main(int argc, char** argv) {
-	
+
 	Demo().Start("Project Grafkom: Class Missqueen", 1920, 1080, false, true);
 }
